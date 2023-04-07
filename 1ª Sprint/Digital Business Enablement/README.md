@@ -10,20 +10,21 @@ Envie o link do vídeo e um documento (pdfou md) com as definições da API.
 ![DIAGRAMA](diagrama.png)
 
 ## Endpoints
-- Parceiro
+- Parceiro de Negócios
   - [Cadastrar Parceiro](#cadastrar-parceiro)
   - [Listar Todos Parceiros](#listar-parceiros)
   - [Apagar Parceiro](#apagar-parceiro)
   - [Atualizar Parceiro](#atualizar-parceiro)
   - [Detalhar Parceiro](#detalhar-parceiro)
   - [Cadastrar transações do dia](#cadastrar-transacoes-do-dia)
+  - 
 - Recomendações
   - [Criar mensagem personalizada](#criar-mensagem-personalizada)
   - [Listar todas Recomendações](#listar-todas-recomendações)
   - [Listar Recomendações por data](#listar-recomendações-por-data)
   - [Listar Recomendação por id](#listar-recomendação-por-id)
   - [Listar Recomendações por usuário](#listar-recomendações-por-usuário)
-## PARCEIRO
+## PARCEIRO DE NEGÓCIOS
 
 ### Cadastrar Parceiro
 
@@ -147,7 +148,7 @@ Envie o link do vídeo e um documento (pdfou md) com as definições da API.
 
 ### Cadastrar Transações do dia
 
-`POST` /aishoppingbuddy/api/parceiro/{id}/transacoes
+`POST` /aishoppingbuddy/api/parceiro/transacoes
 
 *Campos de requisição*
 | campo | tipo | obrigatório | descrição
