@@ -16,14 +16,14 @@ Envie o link do vídeo e um documento (pdfou md) com as definições da API.
   - [Apagar Parceiro](#apagar-parceiro)
   - [Atualizar Parceiro](#atualizar-parceiro)
   - [Detalhar Parceiro](#detalhar-parceiro)
-  - [Cadastrar transações do dia](#cadastrar-transacoes-do-dia)
-  - 
+  - [Cadastrar transações do dia](#cadastrar-transações-do-dia)
 - Recomendações
   - [Criar mensagem personalizada](#criar-mensagem-personalizada)
   - [Listar todas Recomendações](#listar-todas-recomendações)
   - [Listar Recomendações por data](#listar-recomendações-por-data)
   - [Listar Recomendação por id](#listar-recomendação-por-id)
   - [Listar Recomendações por usuário](#listar-recomendações-por-usuário)
+
 ## PARCEIRO DE NEGÓCIOS
 
 ### Cadastrar Parceiro
@@ -164,7 +164,22 @@ Envie o link do vídeo e um documento (pdfou md) com as definições da API.
       "valorTotal":10000.00,
       "cep":'69312545',
       "data": '2023-12-27T10:30',
-      "cancelado": True,
+      "cancelado": False,
+      "parceiro": {
+        "id": 1364,
+        "nomeFantasia": 'MercadoLivre',
+        "dataEntrada": '2023-06-04',
+        "dataSaida": null,
+        "cnpj": '19951232000153'
+      },
+      "usuario":{
+        "id":4234,
+        "nome":'Pedro de Ferreira Silva',
+        "cpf":'90010571019',
+        "cep":'77826025',
+        "dataNascimento":'1998-06-21'
+        "genero":'M'
+      },
       "produtos": [
         {
           "id": 5641,
@@ -190,6 +205,21 @@ Envie o link do vídeo e um documento (pdfou md) com as definições da API.
       "cep":'69312545',
       "data": '2023-12-27T10:30',
       "cancelado": True,
+      "parceiro": {
+        "id": 1364,
+        "nomeFantasia": 'MercadoLivre',
+        "dataEntrada": '2023-06-04',
+        "dataSaida": null,
+        "cnpj": '19951232000153'
+      },
+      "usuario":{
+        "id":4234,
+        "nome":'Pedro de Ferreira Silva',
+        "cpf":'90010571019',
+        "cep":'77826025',
+        "dataNascimento":'1998-06-21'
+        "genero":'M'
+      },
       "produtos": [
         {
           "id": 5641,
@@ -242,6 +272,21 @@ Cria uma recomendação no banco e cria a resposta do
       "cep":'69312545',
       "data": '2023-12-27T10:30',
       "cancelado": True,
+      "parceiro": {
+        "id": 1364,
+        "nomeFantasia": 'MercadoLivre',
+        "dataEntrada": '2023-06-04',
+        "dataSaida": null,
+        "cnpj": '19951232000153'
+      },
+      "usuario":{
+        "id":4234,
+        "nome":'Pedro de Ferreira Silva',
+        "cpf":'90010571019',
+        "cep":'77826025',
+        "dataNascimento":'1998-06-21'
+        "genero":'M'
+      },
       "produtos": [
         {
           "id": 5641,
@@ -267,6 +312,21 @@ Cria uma recomendação no banco e cria a resposta do
       "cep":'69312545',
       "data": '2023-12-27T10:30',
       "cancelado": True,
+      "parceiro": {
+        "id": 1364,
+        "nomeFantasia": 'MercadoLivre',
+        "dataEntrada": '2023-06-04',
+        "dataSaida": null,
+        "cnpj": '19951232000153'
+      },
+      "usuario":{
+        "id":4234,
+        "nome":'Pedro de Ferreira Silva',
+        "cpf":'90010571019',
+        "cep":'77826025',
+        "dataNascimento":'1998-06-21'
+        "genero":'M'
+      },
       "produtos": [
         {
           "id": 5641,
@@ -321,6 +381,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -346,6 +421,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -396,6 +486,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -421,6 +526,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+          "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -486,6 +606,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -511,6 +646,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -561,6 +711,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -586,6 +751,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -650,6 +830,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -675,6 +870,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -739,6 +949,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -764,6 +989,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
@@ -839,6 +1079,21 @@ Cria uma recomendação no banco e cria a resposta do
         "cep":'69312545',
         "data": '2023-12-27T10:30',
         "cancelado": True,
+        "parceiro": {
+          "id": 1364,
+          "nomeFantasia": 'MercadoLivre',
+          "dataEntrada": '2023-06-04',
+          "dataSaida": null,
+          "cnpj": '19951232000153'
+        },
+        "usuario":{
+          "id":4234,
+          "nome":'Pedro de Ferreira Silva',
+          "cpf":'90010571019',
+          "cep":'77826025',
+          "dataNascimento":'1998-06-21'
+          "genero":'M'
+        },
         "produtos": [
             {
             "id": 5641,
