@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="EF9287C3-7FED-2D82-45CC-F2320B63B61C" containerWithKeyObject="8B7330E5-1010-8697-7665-F66D200C7882" localFKIndex="8A13DE53-10DA-5DBD-FD0F-CA8CA70D9BFA" name="FK_AISB_PRODUTO_RECOMENDACAO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>49917236-90C1-7A66-443C-D5FDDD30B7DB</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<referredTableLongName>T_AISB_RECOMENDACAO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>4C7BA6EA-38C2-C968-4767-206BB7ADCA75</referredTableID>
+<keyObject>F628ADE5-E6FD-1639-0FF4-64B5CC283166</keyObject>
+<referredKeyID>F628ADE5-E6FD-1639-0FF4-64B5CC283166</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>cd_recomendacao</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

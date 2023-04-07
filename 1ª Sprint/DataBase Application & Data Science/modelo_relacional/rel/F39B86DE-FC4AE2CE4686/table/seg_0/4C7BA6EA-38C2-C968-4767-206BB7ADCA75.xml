@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4C7BA6EA-38C2-C968-4767-206BB7ADCA75" name="T_AISB_RECOMENDACAO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>DBB9C30B-CC3A-2ED2-BAF2-DE22B6E98BCD</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cd_recomendacao" id="499C7346-7853-DFBA-32C5-C399E3A393FA">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>FE31DA4D-ADCC-9F78-72BB-D207A8F08637</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cd_usuario" id="D2905B20-3B5C-246C-7787-F8C07FD51E46">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>331B00E0-DA4F-C600-0DAF-C8A7AFDAFD24</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4809A1A3-2FAF-4363-3DA1-BCF652783F97" referredColumn="1EBCE6E5-F6B2-6C82-E277-D3E7DA9990E3"/>
+</associations>
+</Column>
+<Column name="cd_transacoes" id="BEA626F9-A69C-811F-75E1-F230A50F91AF">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>6F8F6329-D2E5-7D66-756B-78986A4AE9D2</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D309BC9E-8E25-07A3-ADF4-B4E8A2C5D997" referredColumn="EF1B5287-4621-7F62-F60F-53938A91022F"/>
+</associations>
+</Column>
+<Column name="dt_mensgaem" id="1EFEA2BB-EBEC-541F-926A-6542F43DB39D">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>93F399FE-D2E9-707C-0250-0AA80BBABEFF</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F628ADE5-E6FD-1639-0FF4-64B5CC283166" name="PK_AISB_RECOMENDACAO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>499CECA7-84B7-4452-B5F4-29BB0DB9869D</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="499C7346-7853-DFBA-32C5-C399E3A393FA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="53C9A2E4-F844-3483-4781-315AA10D5639" name="FK_AISB_RECOMENDACAO_TRANSACOES">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>79764277-FB11-3642-C398-0DC3F8ECCCD1</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEA626F9-A69C-811F-75E1-F230A50F91AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F5746CD8-1F8F-27E4-D7D0-1CC28E397F63" name="FK_AISB_RECOMENDACAO_USUARIO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>7CA1C80D-571E-298B-7B8C-B69EBC5A2C54</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D2905B20-3B5C-246C-7787-F8C07FD51E46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

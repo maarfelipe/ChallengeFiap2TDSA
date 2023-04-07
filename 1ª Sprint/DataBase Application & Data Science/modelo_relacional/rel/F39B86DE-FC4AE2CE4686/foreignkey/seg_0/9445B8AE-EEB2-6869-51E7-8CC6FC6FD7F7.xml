@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9445B8AE-EEB2-6869-51E7-8CC6FC6FD7F7" containerWithKeyObject="1600C348-04E4-DEEC-E2EA-33276DB0D008" localFKIndex="D6A07A36-7C62-4181-E37A-88ECAD19A2E7" name="FK_AISB_TRANSACOES_PARCEIROS_NEGOCIOS">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>22141C27-1FCD-AAAA-5C73-035931866565</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<referredTableLongName>T_AISB_PARCEIROS_NEGOCIOS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F12F6F33-A3FC-CD3B-1424-0215AB2CD96D</referredTableID>
+<keyObject>B0D4831B-6E45-7EC1-0BF4-78EB0960B7CA</keyObject>
+<referredKeyID>B0D4831B-6E45-7EC1-0BF4-78EB0960B7CA</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>cd_parceiros</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

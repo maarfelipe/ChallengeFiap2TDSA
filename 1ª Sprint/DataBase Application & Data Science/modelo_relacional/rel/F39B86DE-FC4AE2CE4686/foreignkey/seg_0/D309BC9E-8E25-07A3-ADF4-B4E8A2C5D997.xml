@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D309BC9E-8E25-07A3-ADF4-B4E8A2C5D997" containerWithKeyObject="4C7BA6EA-38C2-C968-4767-206BB7ADCA75" localFKIndex="53C9A2E4-F844-3483-4781-315AA10D5639" name="FK_AISB_RECOMENDACAO_TRANSACOES">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>79764277-FB11-3642-C398-0DC3F8ECCCD1</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<referredTableLongName>T_AISB_TRANSACOES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1600C348-04E4-DEEC-E2EA-33276DB0D008</referredTableID>
+<keyObject>5249E793-740A-9C40-969B-6D89618B7F37</keyObject>
+<referredKeyID>5249E793-740A-9C40-969B-6D89618B7F37</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>cd_transacoes</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
