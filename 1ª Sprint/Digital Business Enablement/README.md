@@ -6,7 +6,7 @@ A primeira entrega será composta por 2 artefatos:
 
 Envie o link do vídeo e um documento (pdfou md) com as definições da API.
 
-## Diagrama de Classes (NÃO FINALIZADO)
+## Diagrama de Classes
 ![DIAGRAMA](diagrama.png)
 
 ## Endpoints
