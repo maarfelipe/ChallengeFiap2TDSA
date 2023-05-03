@@ -8,11 +8,11 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com</groupId>
+	<groupId>com.example</groupId>
 	<artifactId>aishoppingbuddy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AI Shopping Buddy</name>
-	<description>API REST do AI Shopping Buddy</description>
+	<name>AiShoppingBuddy</name>
+	<description>API Restful do AI Shopping Buddy</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
