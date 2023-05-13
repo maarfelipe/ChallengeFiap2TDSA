@@ -15,7 +15,7 @@ Implementação de uma API RESTful com as principais funcionalidades da soluçã
 Entrega: Código fonte e documentação devem ser entregues via link de repositório do GitHub.
 
 ## Diagrama de Classes
-![DIAGRAMA](diagrama.png)
+![DIAGRAMA](diagrama_uml.png)
 
 ## Endpoints
 - Parceiro de Negócios
@@ -39,13 +39,14 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 `POST` /aishoppingbuddy/api/parceiro
 
 *Campos de requisição*
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|------------
-|id|long|sim| Número indentificador do parceiro
-|nomeFantasia|String|sim| Nome Fantasia do parceiro
-|dataEntrada|Date|sim| Data de Entrada do parceiro
-|dataEncerramento|Date|não| Data de Encerramento do parceiro
-|cnpj|String|sim| CPNJ do parceiro
+
+| campo            | tipo   | obrigatório | descrição                         |
+|------------------|--------|:-----------:|-----------------------------------|
+| id               | long   |     sim     | Número indentificador do parceiro |
+| nomeFantasia     | String |     sim     | Nome Fantasia do parceiro         |
+| dataEntrada      | Date   |     sim     | Data de Entrada do parceiro       |
+| dataEncerramento | Date   |     não     | Data de Encerramento do parceiro  |
+| cnpj             | String |     sim     | CPNJ do parceiro                  |
 
 *Exemplo de requisição*
 ```
@@ -59,10 +60,11 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|201| o parceiro foi cadastrado com sucesso
-|400| dados inválidos
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 201    | o parceiro foi cadastrado com sucesso |
+| 400    | dados inválidos                       |
 
 ### Listar Parceiros
 
@@ -89,32 +91,35 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| os dados foram retornados com sucesso
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 200    | os dados foram retornados com sucesso |
 
 ### Apagar Parceiro
 
 `DELETE` /aishoppingbuddy/api/parceiro/{id}
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| o parceiro foi removido com sucesso
-|404| não foi possível achar um parceiro com esse id
+
+| código | descrição                                      |
+|--------|------------------------------------------------|
+| 200    | o parceiro foi removido com sucesso            |
+| 404    | não foi possível achar um parceiro com esse id |
 
 ### Atualizar Parceiro
 
 `PUT` /aishoppingbuddy/api/parceiro/{id}
 
 *Campos de requisição*
-| campo | tipo | obrigatório | derscrição
-|-------|------|:-------------:|------------
-|id|long|sim| Número indentificador do parceiro
-|nomeFantasia|String|sim| Nome Fantasia do parceiro
-|dataEntrada|Date|sim| Data de Entrada do parceiro
-|dataEncerramento|Date|não| Data de Encerramento do parceiro
-|cnpj|String|sim| CPNJ do parceiro
+
+| campo            | tipo   | obrigatório | derscrição                        |
+|------------------|--------|:-----------:|-----------------------------------|
+| id               | long   |     sim     | Número indentificador do parceiro |
+| nomeFantasia     | String |     sim     | Nome Fantasia do parceiro         |
+| dataEntrada      | Date   |     sim     | Data de Entrada do parceiro       |
+| dataEncerramento | Date   |     não     | Data de Encerramento do parceiro  |
+| cnpj             | String |     sim     | CPNJ do parceiro                  |
 
 *Exemplo de requisição*
 ```
@@ -128,10 +133,11 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| o parceiro foi atualizado com sucesso
-|404| não foi possível achar um parceiro com esse id
+
+| código | descrição                                      |
+|--------|------------------------------------------------|
+| 200    | o parceiro foi atualizado com sucesso          |
+| 404    | não foi possível achar um parceiro com esse id |
 
 ### Detalhar Parceiro
 
@@ -149,19 +155,21 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| o parceiro foi detalhado com sucesso
-|404| não foi possível achar um parceiro com esse id
+
+| código | descrição                                      |
+|--------|------------------------------------------------|
+| 200    | o parceiro foi detalhado com sucesso           |
+| 404    | não foi possível achar um parceiro com esse id |
 
 ### Cadastrar Transações do dia
 
 `POST` /aishoppingbuddy/api/parceiro/transacoes
 
 *Campos de requisição*
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|------------
-|transacoes|List<Transacoes>|sim| Lista de todas as transacoes realizadas no dia
+
+| campo      | tipo             | obrigatório | descrição                                      |
+|------------|------------------|:-----------:|------------------------------------------------|
+| transacoes | List<Transacoes> |     sim     | Lista de todas as transacoes realizadas no dia |
 
 *Exemplo de requisição*
 ```
@@ -252,10 +260,11 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|201| transações do dia cadastradas com sucesso
-|404| não foi possível achar um parceiro com esse id
+
+| código | descrição                                      |
+|--------|------------------------------------------------|
+| 201    | transações do dia cadastradas com sucesso      |
+| 404    | não foi possível achar um parceiro com esse id |
 
 ## RECOMENDAÇÃO
 
@@ -266,9 +275,10 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 Cria uma recomendação no banco e cria a resposta do
 
 *Campos de requisição*
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|------------
-|transacoes|List<Transacoes>|sim| Lista das transacões para fazer a recomendação
+
+| campo      | tipo             | obrigatório | descrição                                      |
+|------------|------------------|:-----------:|------------------------------------------------|
+| transacoes | List<Transacoes> |     sim     | Lista das transacões para fazer a recomendação |
 
 *Exemplo de requisição*
 ```
@@ -366,10 +376,11 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|201| mensagem personalizada criada com sucesso
-|400| dados inválidos
+
+| código | descrição                                 |
+|--------|-------------------------------------------|
+| 201    | mensagem personalizada criada com sucesso |
+| 400    | dados inválidos                           |
 
 ### Listar Todas Recomendações
 
@@ -592,9 +603,10 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| os dados foram retornados com sucesso
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 200    | os dados foram retornados com sucesso |
 
 ### Listar Recomendações por data
 
@@ -817,9 +829,10 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| os dados foram retornados com sucesso
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 200    | os dados foram retornados com sucesso |
 
 ### Listar Recomendação por id
 
@@ -935,9 +948,10 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| os dados foram retornados com sucesso
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 200    | os dados foram retornados com sucesso |
 
 ### Listar Recomendações por usuário
 
@@ -1145,6 +1159,7 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 
 *Resposta*
-| código | descrição
-|--------|-----------
-|200| os dados foram retornados com sucesso
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 200    | os dados foram retornados com sucesso |
