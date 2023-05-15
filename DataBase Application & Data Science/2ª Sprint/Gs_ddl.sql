@@ -12,20 +12,24 @@ DROP TABLE t_aisb_transacoes CASCADE CONSTRAINTS;
 DROP TABLE t_aisb_usuario CASCADE CONSTRAINTS;
 */
 
-CREATE TABLE t_aisb_funcionario (
-    cd_funcionario NUMBER(4) NOT NULL,
-    cd_parceiros   NUMBER(3) NOT NULL,
-    nm_funcionario VARCHAR2(50) NOT NULL,
-    ds_email       VARCHAR2(50) NOT NULL
-);
 
 CREATE TABLE t_aisb_parceiros_negocios (
-    cd_parceiros             NUMBER(3) NOT NULL,
+    cd_parceiros             NUMBER(3) primary key,
     nm_fantasia              VARCHAR2(50) NOT NULL,
     dt_entrada_parceiro      DATE NOT NULL,
     dt_encerramento_parceiro DATE,
     nr_cnpj                  NUMBER(14) NOT NULL
 );
+
+
+
+CREATE TABLE t_aisb_funcionario (
+    cd_funcionario NUMBER(4) primary key,
+    nm_funcionario VARCHAR2(50) NOT NULL,
+    ds_email       VARCHAR2(50) NOT NULL,
+    parceiros_fk references t_aisb_parceiros_negocios
+);
+
 
 CREATE TABLE t_aisb_produto (
     cd_produto      NUMBER(10) NOT NULL,
@@ -66,12 +70,6 @@ CREATE TABLE t_aisb_usuario (
 );
 
 ---------------Primarary keys:-------------------
---TABELA T_AISB_FUNCIONARIO
-ALTER TABLE t_aisb_funcionario ADD CONSTRAINT pk_aisb_funcionario PRIMARY KEY ( cd_funcionario );
-
---Tabela T_AISB_PARCEIROS_NEGOCIOS
-ALTER TABLE t_aisb_parceiros_negocios ADD CONSTRAINT pk_aisb_parceiros_negocios PRIMARY KEY ( cd_parceiros );
-
 --Tabela T_AISB_PRODUTO
 ALTER TABLE t_aisb_produto ADD CONSTRAINT pk_aisb_produto PRIMARY KEY ( cd_produto );
 
@@ -93,9 +91,7 @@ CHECK (upper(ds_genero) = 'M' OR upper(ds_genero) = 'H' OR upper(ds_genero) = 'N
 
 
 --------------FOREIGN KEYS:-------------------
-ALTER TABLE t_aisb_funcionario
-    ADD CONSTRAINT fk_aisb_funcionario_parceiros FOREIGN KEY ( cd_parceiros )
-        REFERENCES t_aisb_parceiros_negocios ( cd_parceiros );
+
 
 ALTER TABLE t_aisb_produto
     ADD CONSTRAINT fk_aisb_produto_recomendacao FOREIGN KEY ( cd_recomendacao )

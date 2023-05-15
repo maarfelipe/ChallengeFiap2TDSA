@@ -19,7 +19,7 @@ insert into t_aisb_parceiros_negocios values(108, 'Mongo',  TO_DATE('16/06/2016'
                                                 TO_DATE('28/02/2018','DD/MM/YYYY'), 11751264000101);
 insert into t_aisb_parceiros_negocios values(109, 'Exclamação',  TO_DATE('20/02/2020','DD/MM/YYYY'), 
                                                 TO_DATE('15/05/2021','DD/MM/YYYY'), 12218899000100);
-                                                  
+commit;                                                  
                                                 
 --Populando T_AISB_USUARIO
 insert into t_aisb_usuario values(100000, 'H', 'Enzo Bento', 44187038108, 17022490, TO_DATE('30/07/2003','DD/MM/YYYY'));
@@ -34,16 +34,17 @@ insert into t_aisb_usuario values(100008, 'M', 'Cármen Dias', 62438480351, 29055
 insert into t_aisb_usuario values(100009, 'H', 'Lucas Fernandes', 18363724858, 68911045, TO_DATE('30/07/2003','DD/MM/YYYY'));
 
 --Populando T_AISB_FUNCIONARIO
-insert into t_aisb_funcionario values(120, 100, 'Valerio Durães', 'duraesvalerio@gmail.com');
-insert into t_aisb_funcionario values(121, 101, 'Marcos Belutti', 'marcosebelutti@gmail.com');
-insert into t_aisb_funcionario values(122, 102, 'Matheus Cauan', 'matheusecauan@gmail.com');
-insert into t_aisb_funcionario values(123, 103, 'Luan Santana', 'lu.santana@gmail.com');
-insert into t_aisb_funcionario values(124, 104, 'Victor Matheus', 'matheusvictor@gmail.com');
-insert into t_aisb_funcionario values(125, 105, 'Karol Dantas', 'karol.dantas@gmail.com');
-insert into t_aisb_funcionario values(126, 106, 'Gustavo Lima', 'gustavolima@gmail.com');
-insert into t_aisb_funcionario values(127, 107, 'Gizele Almeida', 'gizelealmeida@gmail.com');
-insert into t_aisb_funcionario values(128, 108, 'Ana Castelo', 'anacastelo@gmail.com');
-insert into t_aisb_funcionario values(129, 109, 'Cleide Santos', 'cleidesanto@gmail.com');
+insert into t_aisb_funcionario values(120, 'Valerio Durães', 'duraesvalerio@gmail.com', 100);
+insert into t_aisb_funcionario values(121, 'Marcos Belutti', 'marcosebelutti@gmail.com', 101);
+insert into t_aisb_funcionario values(122, 'Matheus Cauan', 'matheusecauan@gmail.com', 102);
+insert into t_aisb_funcionario values(123, 'Luan Santana', 'lu.santana@gmail.com', 103);
+insert into t_aisb_funcionario values(124, 'Victor Matheus', 'matheusvictor@gmail.com', 104);
+insert into t_aisb_funcionario values(125, 'Karol Dantas', 'karol.dantas@gmail.com', 105);
+insert into t_aisb_funcionario values(126, 'Gustavo Lima', 'gustavolima@gmail.com', 106);
+insert into t_aisb_funcionario values(127, 'Gizele Almeida', 'gizelealmeida@gmail.com', 107);
+insert into t_aisb_funcionario values(128, 'Ana Castelo', 'anacastelo@gmail.com', 108);
+insert into t_aisb_funcionario values(129, 'Cleide Santos', 'cleidesanto@gmail.com, 109');
+commit;
 
 --Populando T_AISB_RECOMENDACAO
 insert into t_aisb_recomendacao values(100010, 100000, TO_DATE('03/05/2023','DD/MM/YYYY'), '');
@@ -72,14 +73,14 @@ insert into t_aisb_produto values(149, 100019, 'Arroz', 'Arroz 5kg', 23.99, 'Arr
 --Populando T_AISB_TRANSAÇÕES
 insert into t_aisb_transacoes values(150, 100000, 100, 140, 1, 399.99, 69097585, TO_DATE('03/05/2023','DD/MM/YYYY'));
 insert into t_aisb_transacoes values(151, 100001, 101, 141, 0, 199.99, 17022490, TO_DATE('01/02/2022','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(152, 100002, 102, 142, 3, 29.99, 64049815, TO_DATE('10/11/2021','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(153, 100003, 103, 143, 2, 1999.99, 56909440, TO_DATE('28/09/2020','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(154, 100004, 104, 144, 4, 2399.99, 69911460, TO_DATE('30/07/2021','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(155, 100005, 105, 145, 5, 99.99, 34710040, TO_DATE('14/08/2022','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(156, 100006, 106, 146, 6, 299000.00, 65606660, TO_DATE('12/01/2023','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(157, 100007, 107, 147, 7, 1499.99, 65040110, TO_DATE('23/09/2022','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(158, 100008, 108, 148, 8, 399.99, 77826474, TO_DATE('11/10/2021','DD/MM/YYYY'));
-insert into t_aisb_transacoes values(159, 100009, 109, 149, 9, 239.99, 29055355, TO_DATE('08/03/2019','DD/MM/YYYY'));     
+insert into t_aisb_transacoes values(152, 100002, 102, 142, 1, 29.99, 64049815, TO_DATE('10/11/2021','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(153, 100003, 103, 143, 0, 1999.99, 56909440, TO_DATE('28/09/2020','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(154, 100004, 104, 144, 0, 2399.99, 69911460, TO_DATE('30/07/2021','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(155, 100005, 105, 145, 1, 99.99, 34710040, TO_DATE('14/08/2022','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(156, 100006, 106, 146, 1, 299000.00, 65606660, TO_DATE('12/01/2023','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(157, 100007, 107, 147, 1, 1499.99, 65040110, TO_DATE('23/09/2022','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(158, 100008, 108, 148, 0, 399.99, 77826474, TO_DATE('11/10/2021','DD/MM/YYYY'));
+insert into t_aisb_transacoes values(159, 100009, 109, 149, 1, 239.99, 29055355, TO_DATE('08/03/2019','DD/MM/YYYY'));     
 
 
 
