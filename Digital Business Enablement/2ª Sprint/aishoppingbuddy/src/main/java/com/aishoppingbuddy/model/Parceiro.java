@@ -36,5 +36,11 @@ public class Parceiro {
     @OneToMany(mappedBy = "parceiro")
     private List<Funcionario> funcionarioList;
 
+    @OneToMany(mappedBy = "parceiro")
+    private List<Transacao> transacaoList;
+
+    @OneToMany(mappedBy = "parceiro")
+    private List<Produto> produtoList;
+
 
 }
