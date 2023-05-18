@@ -75,12 +75,11 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         v_nm_fantasia := '&nm_fantasia'; 
         v_dt_entrada_parceiro := TO_DATE('&dt_entrada_parceiro', 'DD/MM/YYYY'); 
-        v_dt_encerramento_parceiro := TO_DATE('&dt_encerramento_parceiro', 'DD/MM/YYYY');
         v_nr_cnpj := '&nr_cnpj'; 
 
         
-        INSERT INTO t_aisb_parceiro_negocio (cd_parceiro, nm_fantasia, dt_entrada_parceiro, dt_encerramento_parceiro, nr_cnpj)
-        VALUES (v_cd_parceiro, v_nm_fantasia, v_dt_entrada_parceiro, v_dt_encerramento_parceiro, v_nr_cnpj);
+        INSERT INTO t_aisb_parceiro_negocio (cd_parceiro, nm_fantasia, dt_entrada_parceiro, nr_cnpj)
+        VALUES (v_cd_parceiro, v_nm_fantasia, v_dt_entrada_parceiro, v_nr_cnpj);
 
         
         DBMS_OUTPUT.PUT_LINE('O parceiro de negócio foi cadastrado com sucesso.');
