@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2D909068-8821-DB16-1936-F69100C47086" name="T_AISB_USUARIO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:41:47 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cd_usuario" id="EEBB5565-146D-F3E3-89C7-56DA23FCF70C">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:41:55 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nm_usuario" id="A178F06E-159E-5BAD-D52B-6357784D40AC">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:42:10 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nr_cpf" id="5E3F348B-6046-DC64-B1E6-368D7BE19535">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:42:17 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<ownDataTypeParameters>,11,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nr_cep_residencia" id="FE590239-F688-A3B4-0DA4-074A46AE6F9B">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:43:03 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dt_nascimento" id="9B85027E-3DCF-39A3-AFAF-AD3BA8E5D1CB">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:43:26 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ds_genero" id="11241EC1-36CA-7F4D-68B3-0E9F67F5D0E3">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:43:57 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F0F808A2-4676-7537-3C42-8B670BDBE80B" name="PK_AISB_USUARIO ">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:42:10 UTC</createdTime>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<newElementsIDs>EEBB5565-146D-F3E3-89C7-56DA23FCF70C</newElementsIDs>
+<usedAttributes>
+<attributeRef>EEBB5565-146D-F3E3-89C7-56DA23FCF70C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

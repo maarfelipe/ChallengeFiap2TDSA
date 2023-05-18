@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C44E8357-3AFE-D60D-9FBC-2469011FB1DA" name="T_AISB_PRODUTO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:44:32 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cd_produto" id="6BB11791-8FF0-08C3-FF5A-B33D1D1E04FB">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:44:49 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cd_recomendacao" id="1D923C59-9C3C-B308-3C97-616EAB913244">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:03:46 UTC</createdTime>
+<generatorID>49917236-90C1-7A66-443C-D5FDDD30B7DB</generatorID>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<referedAttribute>FE31DA4D-ADCC-9F78-72BB-D207A8F08637</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nm_produto" id="2C6CA903-5516-3204-043F-885F893C396E">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:45:06 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ds_tipo" id="7B2B7349-7E27-4134-5DC4-DF5C6946D36C">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:45:34 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="vl_produto" id="BB615ABB-FB0D-6A4B-6CBE-A5FA9B202589">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:45:52 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ds_produto" id="E62F9A91-5612-AC77-E01B-9537F868B357">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:46:16 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ds_categoria" id="78DFF951-4F48-33B3-6918-8125C4B4A21E">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:46:31 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BC0B4BE1-F8A9-088D-0FF4-AFC956B3B9FE" name="PK_AISB_PRODUTO ">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:45:06 UTC</createdTime>
+<ownerDesignName>Modelo_Relacional</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<newElementsIDs>6BB11791-8FF0-08C3-FF5A-B33D1D1E04FB</newElementsIDs>
+<usedAttributes>
+<attributeRef>6BB11791-8FF0-08C3-FF5A-B33D1D1E04FB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
