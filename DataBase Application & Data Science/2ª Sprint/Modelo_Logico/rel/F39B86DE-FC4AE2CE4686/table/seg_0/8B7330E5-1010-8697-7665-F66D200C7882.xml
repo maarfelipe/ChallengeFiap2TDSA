@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8B7330E5-1010-8697-7665-F66D200C7882" name="T_AISB_PRODUTO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>C44E8357-3AFE-D60D-9FBC-2469011FB1DA</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cd_produto" id="2A422D0E-DE57-2AAB-3016-14F743A9DC02">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>6BB11791-8FF0-08C3-FF5A-B33D1D1E04FB</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cd_recomendacao" id="49591BD3-0844-2B0E-EEC2-C37CA691E75C">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>1D923C59-9C3C-B308-3C97-616EAB913244</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EF9287C3-7FED-2D82-45CC-F2320B63B61C" referredColumn="499C7346-7853-DFBA-32C5-C399E3A393FA"/>
+</associations>
+</Column>
+<Column name="nm_produto" id="42A11246-29BB-168E-2931-0C09F64040B5">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>2C6CA903-5516-3204-043F-885F893C396E</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ds_tipo" id="2FD2E1BA-EE98-71E6-C028-C0A2270A9D03">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>7B2B7349-7E27-4134-5DC4-DF5C6946D36C</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="vl_produto" id="D795EFD2-9483-CB8A-3BA0-0D1FBFDC38B7">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>BB615ABB-FB0D-6A4B-6CBE-A5FA9B202589</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ds_produto" id="267684C3-11DC-00D2-B72A-5F5F5F59F1F7">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>E62F9A91-5612-AC77-E01B-9537F868B357</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ds_categoria" id="5091E2B0-835D-F78E-263C-77B428A98199">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>78DFF951-4F48-33B3-6918-8125C4B4A21E</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E3502D5C-2C57-B831-DBCD-4A80B96B8779" name="PK_AISB_PRODUTO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>BC0B4BE1-F8A9-088D-0FF4-AFC956B3B9FE</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2A422D0E-DE57-2AAB-3016-14F743A9DC02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8A13DE53-10DA-5DBD-FD0F-CA8CA70D9BFA" name="FK_AISB_PRODUTO_RECOMENDACAO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 03:08:33 UTC</createdTime>
+<generatorID>49917236-90C1-7A66-443C-D5FDDD30B7DB</generatorID>
+<ownerDesignName>Modelo_Logico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49591BD3-0844-2B0E-EEC2-C37CA691E75C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
