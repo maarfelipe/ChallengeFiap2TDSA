@@ -1,5 +1,6 @@
 package com.aishoppingbuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,9 +38,11 @@ public class Usuario {
     private String genero;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Recomendacao> recomendacaoList;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Transacao> transacaoList;
 
 }

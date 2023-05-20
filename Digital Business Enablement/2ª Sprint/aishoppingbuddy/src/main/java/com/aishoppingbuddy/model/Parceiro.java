@@ -1,5 +1,6 @@
 package com.aishoppingbuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,12 +35,15 @@ public class Parceiro {
     private String cnpj;
 
     @OneToMany(mappedBy = "parceiro")
+    @JsonIgnore
     private List<Funcionario> funcionarioList;
 
     @OneToMany(mappedBy = "parceiro")
+    @JsonIgnore
     private List<Transacao> transacaoList;
 
     @OneToMany(mappedBy = "parceiro")
+    @JsonIgnore
     private List<Produto> produtoList;
 
 

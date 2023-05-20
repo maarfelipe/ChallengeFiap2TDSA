@@ -1,5 +1,6 @@
 package com.aishoppingbuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class Recomendacao {
     private LocalDate data;
 
     @OneToMany(mappedBy = "recomendacao")
+    @JsonIgnore
     private List<Produto> produtoList;
 
     @ManyToOne

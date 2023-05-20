@@ -1,7 +1,9 @@
 package com.aishoppingbuddy.config;
 
 import com.aishoppingbuddy.model.Parceiro;
+import com.aishoppingbuddy.model.Produto;
 import com.aishoppingbuddy.repository.ParceiroRepository;
+import com.aishoppingbuddy.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
     ParceiroRepository parceiroRepository;
+
+    @Autowired
+    ProdutoRepository produtoRepository;
 
     @Override
     public void run(String... args) throws Exception {
