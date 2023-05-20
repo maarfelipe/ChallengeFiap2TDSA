@@ -1,5 +1,6 @@
 package com.aishoppingbuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,14 +36,17 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "cd_parceiros")
+    @JsonIgnore
     private Parceiro parceiro;
 
     @ManyToOne
     @JoinColumn(name = "cd_recomendacao")
+    @JsonIgnore
     private Recomendacao recomendacao;
 
     @ManyToOne
     @JoinColumn(name = "cd_transacao")
+    @JsonIgnore
     private Transacao transacao;
 
 }

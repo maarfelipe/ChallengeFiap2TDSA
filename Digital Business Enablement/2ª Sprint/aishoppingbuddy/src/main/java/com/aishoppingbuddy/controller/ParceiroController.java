@@ -2,11 +2,9 @@ package com.aishoppingbuddy.controller;
 
 import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.model.Produto;
+import com.aishoppingbuddy.model.Recomendacao;
 import com.aishoppingbuddy.model.Transacao;
-import com.aishoppingbuddy.repository.ParceiroRepository;
-import com.aishoppingbuddy.repository.ProdutoRepository;
-import com.aishoppingbuddy.repository.TransacaoRepository;
-import com.aishoppingbuddy.repository.UsuarioRepository;
+import com.aishoppingbuddy.repository.*;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +33,9 @@ public class ParceiroController {
 
     @Autowired
     ProdutoRepository produtoRepository;
+
+    @Autowired
+    RecomendacaoRepository recomendacaoRepository;
 
     @GetMapping
     public List<Parceiro> load(){
@@ -86,6 +87,13 @@ public class ParceiroController {
             log.info("cadastrando transação "+t.getId()+" no parceiro "+result.getId());
         }
         return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("{id}/transacoes")
+    public List<Transacao> listarTransacoes(@PathVariable Long id) {
+        var parceiroResult = parceiroRepository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        return transacaoRepository.findAll();
     }
 
 }

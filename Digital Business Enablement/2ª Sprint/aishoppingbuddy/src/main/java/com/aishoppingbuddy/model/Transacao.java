@@ -44,7 +44,7 @@ public class Transacao {
     private Parceiro parceiro;
 
     @OneToMany(mappedBy = "transacao")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Produto> produtoList;
 
 }

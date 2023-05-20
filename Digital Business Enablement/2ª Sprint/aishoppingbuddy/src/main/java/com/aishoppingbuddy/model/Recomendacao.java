@@ -34,6 +34,7 @@ public class Recomendacao {
 
     @ManyToOne
     @JoinColumn(name = "cd_usuario")
+    @JsonIgnore
     private Usuario usuario;
 
 }
