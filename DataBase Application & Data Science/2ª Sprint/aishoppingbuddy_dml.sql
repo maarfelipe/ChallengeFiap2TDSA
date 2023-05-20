@@ -1,23 +1,23 @@
 --Populando T_AISB_PARCEIROS_NEGOCIOS
-insert into t_aisb_parceiro_negocio values(100, 'Cleiton Rasta',  TO_DATE('10/05/2022','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(100, 'Amazon',  TO_DATE('10/05/2022','DD/MM/YYYY'), 
                                                 TO_DATE('10/03/2023','DD/MM/YYYY'), 95831661000175);
 insert into t_aisb_parceiro_negocio values(101, 'Roupas legais',  TO_DATE('22/02/2022','DD/MM/YYYY'), 
                                                 TO_DATE('','DD/MM/YYYY'), 28160686000105);
-insert into t_aisb_parceiro_negocio values(102, 'Garfield',  TO_DATE('09/12/2021','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(102, 'Americanas',  TO_DATE('09/12/2021','DD/MM/YYYY'), 
                                                 TO_DATE('21/02/2023','DD/MM/YYYY'), 22211739000185);
-insert into t_aisb_parceiro_negocio values(103, 'Kotlin Dois',  TO_DATE('30/07/2017','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(103, 'Apple',  TO_DATE('30/07/2017','DD/MM/YYYY'), 
                                                 TO_DATE('03/05/2020','DD/MM/YYYY'), 49181554000121);
-insert into t_aisb_parceiro_negocio values(104, 'Dellacer',  TO_DATE('22/05/2020','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(104, 'Submarino',  TO_DATE('22/05/2020','DD/MM/YYYY'), 
                                                 TO_DATE('22/11/2022','DD/MM/YYYY'), 58359222000185);
 insert into t_aisb_parceiro_negocio values(105, 'Couto Esportes',  TO_DATE('13/06/2021','DD/MM/YYYY'), 
                                                 TO_DATE('01/01/2023','DD/MM/YYYY'), 29539514000100);
-insert into t_aisb_parceiro_negocio values(106, 'Meca',  TO_DATE('24/01/2022','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(106, 'Casas Bahia',  TO_DATE('24/01/2022','DD/MM/YYYY'), 
                                                 TO_DATE('24/12/2022','DD/MM/YYYY'), 33547947000176);
 insert into t_aisb_parceiro_negocio values(107, 'Paif',  TO_DATE('31/12/2020','DD/MM/YYYY'), 
                                                 TO_DATE('30/08/2022','DD/MM/YYYY'), 52234883000106);
-insert into t_aisb_parceiro_negocio values(108, 'Mongo',  TO_DATE('16/06/2016','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(108, 'Magazine Luiza',  TO_DATE('16/06/2016','DD/MM/YYYY'), 
                                                 TO_DATE('28/02/2018','DD/MM/YYYY'), 11751264000101);
-insert into t_aisb_parceiro_negocio values(109, 'Exclamação',  TO_DATE('20/02/2020','DD/MM/YYYY'), 
+insert into t_aisb_parceiro_negocio values(109, 'Pernambucanas',  TO_DATE('20/02/2020','DD/MM/YYYY'), 
                                                 TO_DATE('15/05/2021','DD/MM/YYYY'), 12218899000100);
 commit;                                                  
                                                 
@@ -47,16 +47,16 @@ insert into t_aisb_funcionario values(129, 'Cleide Santos', 'cleidesanto@gmail.c
 commit;
 
 --Populando T_AISB_RECOMENDACAO
-insert into t_aisb_recomendacao values(100010, 100000, TO_DATE('03/05/2023','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100011, 100001, TO_DATE('01/02/2022','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100012, 100002, TO_DATE('10/11/2021','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100013, 100003, TO_DATE('28/09/2020','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100014, 100004, TO_DATE('30/07/2021','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100015, 100005, TO_DATE('14/08/2022','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100016, 100006, TO_DATE('12/01/2023','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100017, 100007, TO_DATE('23/09/2022','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100018, 100008, TO_DATE('11/10/2021','DD/MM/YYYY'), '');
-insert into t_aisb_recomendacao values(100019, 100009, TO_DATE('08/03/2019','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100010, 100000, 100, TO_DATE('03/05/2023','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100011, 100001, 101, TO_DATE('01/02/2022','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100012, 100002, 102, TO_DATE('10/11/2021','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100013, 100003, 103, TO_DATE('28/09/2020','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100014, 100004, 104, TO_DATE('30/07/2021','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100015, 100005, 105, TO_DATE('14/08/2022','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100016, 100006, 106, TO_DATE('12/01/2023','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100017, 100007, 107, TO_DATE('23/09/2022','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100018, 100008, 108, TO_DATE('11/10/2021','DD/MM/YYYY'), '');
+insert into t_aisb_recomendacao values(100019, 100009, 109, TO_DATE('08/03/2019','DD/MM/YYYY'), '');
 
 --Populando T_AISB_PRODUTO
 insert into t_aisb_produto values(140, 100010, 'Teclado', 'Teclado Mecânico', 399.99, 'Teclado Mecânico Branco HyperX', 'Periféricos');

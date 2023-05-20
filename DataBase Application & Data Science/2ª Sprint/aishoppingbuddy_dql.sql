@@ -90,9 +90,9 @@ select * from t_aisb_parceiro_negocio;
 
 
 
-
-
-
+SELECT dt_mensagem, ds_mensagem_recomendacao
+FROM t_aisb_recomendacao
+WHERE cd_usuario = 100000;
 
 
 

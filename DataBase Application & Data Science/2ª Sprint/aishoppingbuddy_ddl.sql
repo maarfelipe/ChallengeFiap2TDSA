@@ -44,6 +44,7 @@ CREATE TABLE t_aisb_produto (
 CREATE TABLE t_aisb_recomendacao (
     cd_recomendacao          NUMBER(6) NOT NULL,
     cd_usuario               NUMBER(6) NOT NULL,
+    cd_parceiros             NUMBER(3) NOT NULL,
     dt_mensagem              DATE NOT NULL,
     ds_mensagem_recomendacao VARCHAR2(250) 
 );
@@ -99,6 +100,9 @@ ALTER TABLE t_aisb_produto
 ALTER TABLE t_aisb_recomendacao
     ADD CONSTRAINT fk_aisb_recomendacao_usuario FOREIGN KEY ( cd_usuario )
         REFERENCES t_aisb_usuario ( cd_usuario );
+ALTER TABLE t_aisb_recomendacao
+    ADD CONSTRAINT fk_aisb_recomendacao_parceiro_negocio FOREIGN KEY ( cd_parceiros )
+        REFERENCES t_aisb_parceiros_negocios ( cd_parceiros );
 
 ALTER TABLE t_aisb_transacao
     ADD CONSTRAINT fk_aisb_transacao_parceiro FOREIGN KEY ( cd_parceiro )
@@ -111,3 +115,5 @@ ALTER TABLE t_aisb_transacao
 ALTER TABLE t_aisb_transacao
     ADD CONSTRAINT fk_aisb_transacao_usuario FOREIGN KEY ( cd_usuario )
         REFERENCES t_aisb_usuario ( cd_usuario );
+        
+        
