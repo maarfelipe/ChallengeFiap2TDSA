@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface ParceiroRepository extends JpaRepository<Parceiro, Long> {
-    void delete(List<Parceiro> parceiros);
 }
