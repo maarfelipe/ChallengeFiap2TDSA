@@ -44,7 +44,7 @@ CREATE TABLE t_aisb_produto (
 CREATE TABLE t_aisb_recomendacao (
     cd_recomendacao          NUMBER(6) NOT NULL,
     cd_usuario               NUMBER(6) NOT NULL,
-    cd_parceiros             NUMBER(3) NOT NULL,
+    cd_parceiro             NUMBER(3) NOT NULL,
     dt_mensagem              DATE NOT NULL,
     ds_mensagem_recomendacao VARCHAR2(250) 
 );
