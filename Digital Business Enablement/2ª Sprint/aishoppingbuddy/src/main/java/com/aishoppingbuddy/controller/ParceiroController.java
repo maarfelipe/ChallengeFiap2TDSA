@@ -97,7 +97,7 @@ public class ParceiroController {
         return transacaoRepository.findAll();
     }
 
-    @PostMapping("{idParceiro}/recomendacoes/{idUsuario}")
+    @PostMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
     public ResponseEntity<Recomendacao> criarRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idUsuario, @RequestBody List<Transacao> transacaoList) {
         var parceiroResult = parceiroRepository.findById(idParceiro)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
@@ -137,16 +137,35 @@ public class ParceiroController {
     public List<Recomendacao> listarTodasRecomendacoes(@PathVariable Long id) {
         var parceiroResult = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
-        return recomendacaoRepository.findByParceiroId(id);
+        return recomendacaoRepository.findByParceiro(parceiroResult);
     }
 
-//    @GetMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
-//    public List<Recomendacao> listarRecomendacoesUsuario(@PathVariable Long idParceiro, @PathVariable Long idUsuario) {
-//        var parceiroResult = parceiroRepository.findById(idParceiro)
-//                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
-//        var usuarioResult = usuarioRepository.findById(idUsuario)
-//                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
-//        return null;
-//    }
+    @GetMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
+    public List<Recomendacao> listarRecomendacoesUsuario(@PathVariable Long idParceiro, @PathVariable Long idUsuario) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        var usuarioResult = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
+        return recomendacaoRepository.findByParceiroAndUsuario(parceiroResult, usuarioResult);
+    }
+
+    @GetMapping("{idParceiro}/recomendacoes/data/{data}")
+    public List<Recomendacao> listarRecomendacoesData(@PathVariable Long idParceiro, @PathVariable LocalDate data) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        return recomendacaoRepository.findByParceiroAndData(parceiroResult,data);
+    }
+
+    @GetMapping("{idParceiro}/recomendacoes/{idRecomendacao}")
+    public Recomendacao acharRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idRecomendacao) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        var recomendacaoResult = recomendacaoRepository.findById(idRecomendacao)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Recomendação não Encontrado"));
+        if (recomendacaoResult.getParceiro() != parceiroResult) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Essa recomendação é de outro Parceiro");
+        }
+        return recomendacaoResult;
+    }
 
 }

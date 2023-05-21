@@ -7,11 +7,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 public interface RecomendacaoRepository extends JpaRepository<Recomendacao, Long> {
 
-    List<Recomendacao> findByParceiroId(Long Id);
+    List<Recomendacao> findByParceiro(Parceiro parceiro);
+
+    List<Recomendacao> findByParceiroAndUsuario(Parceiro parceiro, Usuario usuario);
+
+    List<Recomendacao> findByParceiroAndData(Parceiro parceiro, LocalDate data);
+
+    Recomendacao findByIdAndParceiro(Long id, Parceiro parceiro);
 
 }
