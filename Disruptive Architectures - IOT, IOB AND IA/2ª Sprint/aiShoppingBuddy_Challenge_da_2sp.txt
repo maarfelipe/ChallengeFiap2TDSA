@@ -1,3 +1,5 @@
+link vídeo:
 https://youtu.be/96E8OC4bp48
 
+link repositório:
 https://github.com/maarfelipe/ChallengeFiap2TDSA
