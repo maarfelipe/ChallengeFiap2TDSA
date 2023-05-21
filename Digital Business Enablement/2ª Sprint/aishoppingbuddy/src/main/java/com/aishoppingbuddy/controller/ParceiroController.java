@@ -45,7 +45,7 @@ public class ParceiroController {
 
     @GetMapping("{id}")
     public ResponseEntity<Parceiro> index(@PathVariable Long id) {
-        log.info("Buscar parceiro: " + id);
+        log.info("buscando parceiro " + id);
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         return ResponseEntity.ok(result);
@@ -53,13 +53,14 @@ public class ParceiroController {
 
     @PostMapping
     public ResponseEntity<Parceiro> create(@RequestBody @Valid Parceiro parceiro){
-        log.info("cadastrando parceiro " + parceiro);
+        log.info("cadastrando parceiro");
         parceiroRepository.save(parceiro);
         return ResponseEntity.status(HttpStatus.CREATED).body(parceiro);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Parceiro> destroy(@PathVariable Long id){
+        log.info("deletando parceiro " + id);
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         parceiroRepository.delete(result);
@@ -68,6 +69,7 @@ public class ParceiroController {
 
     @PutMapping("{id}")
     public ResponseEntity<Parceiro> update(@PathVariable Long id, @RequestBody @Valid Parceiro parceiro){
+        log.info("atualizando parceiro "+id);
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         parceiro.setId(id);
