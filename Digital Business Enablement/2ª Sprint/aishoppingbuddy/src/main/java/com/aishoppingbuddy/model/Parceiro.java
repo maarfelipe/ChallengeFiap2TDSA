@@ -46,5 +46,8 @@ public class Parceiro {
     @JsonIgnore
     private List<Produto> produtoList;
 
+    @OneToMany(mappedBy = "parceiro")
+    @JsonIgnore
+    private List<Recomendacao> recomendacaoList;
 
 }

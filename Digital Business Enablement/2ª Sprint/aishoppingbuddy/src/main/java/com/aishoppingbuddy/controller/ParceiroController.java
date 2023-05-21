@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -44,7 +45,7 @@ public class ParceiroController {
 
     @GetMapping("{id}")
     public ResponseEntity<Parceiro> index(@PathVariable Long id) {
-        log.info("Buscar parceiro: " + id);
+        log.info("buscando parceiro " + id);
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         return ResponseEntity.ok(result);
@@ -52,13 +53,14 @@ public class ParceiroController {
 
     @PostMapping
     public ResponseEntity<Parceiro> create(@RequestBody @Valid Parceiro parceiro){
-        log.info("cadastrando parceiro " + parceiro);
+        log.info("cadastrando parceiro");
         parceiroRepository.save(parceiro);
         return ResponseEntity.status(HttpStatus.CREATED).body(parceiro);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Parceiro> destroy(@PathVariable Long id){
+        log.info("deletando parceiro " + id);
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         parceiroRepository.delete(result);
@@ -67,6 +69,7 @@ public class ParceiroController {
 
     @PutMapping("{id}")
     public ResponseEntity<Parceiro> update(@PathVariable Long id, @RequestBody @Valid Parceiro parceiro){
+        log.info("atualizando parceiro "+id);
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         parceiro.setId(id);
@@ -94,6 +97,77 @@ public class ParceiroController {
         var parceiroResult = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         return transacaoRepository.findAll();
+    }
+
+    @PostMapping("{idParceiro}/recomendacoes/{idUsuario}")
+    public ResponseEntity<Recomendacao> criarRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idUsuario, @RequestBody List<Transacao> transacaoList) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        var usuarioResult = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
+
+        // DADOS GERADOS PELA API DE MACHINE LEARNING
+        String mensagem = "MENSAGEM GERADA PELO CHATGPT";
+        LocalDate data = LocalDate.now();
+        List<Produto> produtoList = List.of(
+                Produto.builder()
+                        .nome("NOME DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .tipo("TIPO DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .valor(50)
+                        .descricao("DESCRICAO DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .categoria("CATEGORIA DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .build()
+        );
+        produtoRepository.saveAll(produtoList);
+        log.info("recuperado dados da api");
+
+        Recomendacao recomendacao = Recomendacao
+                .builder()
+                .mensagem(mensagem)
+                .data(data)
+                .parceiro(parceiroResult)
+                .usuario(usuarioResult)
+                .produtoList(produtoList)
+                .build();
+
+        recomendacaoRepository.save(recomendacao);
+        log.info("recomendacao "+recomendacao.getId()+" salva");
+        return ResponseEntity.ok(recomendacao);
+    }
+
+    @GetMapping("{id}/recomendacoes")
+    public List<Recomendacao> listarTodasRecomendacoes(@PathVariable Long id) {
+        var parceiroResult = parceiroRepository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        return recomendacaoRepository.findByParceiro(parceiroResult);
+    }
+
+    @GetMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
+    public List<Recomendacao> listarRecomendacoesUsuario(@PathVariable Long idParceiro, @PathVariable Long idUsuario) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        var usuarioResult = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
+        return recomendacaoRepository.findByParceiroAndUsuario(parceiroResult, usuarioResult);
+    }
+
+    @GetMapping("{idParceiro}/recomendacoes/data/{data}")
+    public List<Recomendacao> listarRecomendacoesData(@PathVariable Long idParceiro, @PathVariable LocalDate data) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        return recomendacaoRepository.findByParceiroAndData(parceiroResult,data);
+    }
+
+    @GetMapping("{idParceiro}/recomendacoes/{idRecomendacao}")
+    public Recomendacao acharRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idRecomendacao) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        var recomendacaoResult = recomendacaoRepository.findById(idRecomendacao)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Recomendação não Encontrado"));
+        if (recomendacaoResult.getParceiro() != parceiroResult) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Essa recomendação é de outro Parceiro");
+        }
+        return recomendacaoResult;
     }
 
 }
