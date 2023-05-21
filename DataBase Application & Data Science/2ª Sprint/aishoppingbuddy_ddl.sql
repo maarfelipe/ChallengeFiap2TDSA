@@ -101,8 +101,8 @@ ALTER TABLE t_aisb_recomendacao
     ADD CONSTRAINT fk_aisb_recomendacao_usuario FOREIGN KEY ( cd_usuario )
         REFERENCES t_aisb_usuario ( cd_usuario );
 ALTER TABLE t_aisb_recomendacao
-    ADD CONSTRAINT fk_aisb_recomendacao_parceiro_negocio FOREIGN KEY ( cd_parceiros )
-        REFERENCES t_aisb_parceiros_negocios ( cd_parceiros );
+    ADD CONSTRAINT fk_aisb_recomendacao_parceiro_negocio FOREIGN KEY ( cd_parceiro )
+        REFERENCES t_aisb_parceiro_negocio ( cd_parceiro );
 
 ALTER TABLE t_aisb_transacao
     ADD CONSTRAINT fk_aisb_transacao_parceiro FOREIGN KEY ( cd_parceiro )
