@@ -25,12 +25,12 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
   - [Atualizar Parceiro](#atualizar-parceiro)
   - [Detalhar Parceiro](#detalhar-parceiro)
   - [Cadastrar transações do dia](#cadastrar-transações-do-dia)
-- Recomendações
-  - [Criar mensagem personalizada](#criar-mensagem-personalizada)
+  - [Listar transações do parceiro](#listar-transações-do-parceiro)
+  - [Criar recomendação personalizada](#criar-recomendação-personalizada)
   - [Listar todas Recomendações](#listar-todas-recomendações)
-  - [Listar Recomendações por data](#listar-recomendações-por-data)
-  - [Listar Recomendação por id](#listar-recomendação-por-id)
   - [Listar Recomendações por usuário](#listar-recomendações-por-usuário)
+  - [Listar Recomendações por data](#listar-recomendações-por-data)
+  - [Achar Recomendação por id](#listar-recomendação-por-id)
 
 ## PARCEIRO DE NEGÓCIOS
 
@@ -42,7 +42,6 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 
 | campo            | tipo   | obrigatório | descrição                         |
 |------------------|--------|:-----------:|-----------------------------------|
-| id               | long   |     sim     | Número indentificador do parceiro |
 | nomeFantasia     | String |     sim     | Nome Fantasia do parceiro         |
 | dataEntrada      | Date   |     sim     | Data de Entrada do parceiro       |
 | dataEncerramento | Date   |     não     | Data de Encerramento do parceiro  |
@@ -51,11 +50,10 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 *Exemplo de requisição*
 ```
 {
-  "id": 1364,
-  "nomeFantasia": 'MercadoLivre',
-  "dataEntrada": '2023-06-04',
+  "nomeFantasia": "MercadoLivre",
+  "dataEntrada": "2023-06-04",
   "dataSaida": null,
-  "cnpj": '19951232000153'
+  "cnpj": "19951232000153"
 }
 ```
 
@@ -74,18 +72,16 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 [
   {
-    "id": 1364,
-    "nomeFantasia": 'MercadoLivre',
-    "dataEntrada": '2023-06-04',
+    "nomeFantasia": "MercadoLivre",
+    "dataEntrada": "2023-06-04",
     "dataSaida": null,
-    "cnpj": '19951232000153'
+    "cnpj": "19951232000153"
   },
   {
-    "id": 2432,
-    "nomeFantasia": 'Amazon',
-    "dataEntrada": '2023-21-07',
+    "nomeFantasia": "Amazon",
+    "dataEntrada": "2023-21-07",
     "dataSaida": null,
-    "cnpj": '17393772000133'
+    "cnpj": "17393772000133"
   }
 ]
 ```
@@ -115,7 +111,6 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 
 | campo            | tipo   | obrigatório | derscrição                        |
 |------------------|--------|:-----------:|-----------------------------------|
-| id               | long   |     sim     | Número indentificador do parceiro |
 | nomeFantasia     | String |     sim     | Nome Fantasia do parceiro         |
 | dataEntrada      | Date   |     sim     | Data de Entrada do parceiro       |
 | dataEncerramento | Date   |     não     | Data de Encerramento do parceiro  |
@@ -124,11 +119,10 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 *Exemplo de requisição*
 ```
 {
-  "id": 1364,
-  "nomeFantasia": 'MercadoLivre',
-  "dataEntrada": '2023-06-04',
+  "nomeFantasia": "MercadoLivre",
+  "dataEntrada": "2023-06-04",
   "dataSaida": null,
-  "cnpj": '19951232000153'
+  "cnpj": "19951232000153"
 }
 ```
 
@@ -147,10 +141,10 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 ```
 {
   "id": 1364,
-  "nomeFantasia": 'MercadoLivre',
-  "dataEntrada": '2023-06-04',
+  "nomeFantasia": "MercadoLivre",
+  "dataEntrada": "2023-06-04",
   "dataSaida": null,
-  "cnpj": '19951232000153'
+  "cnpj": "19951232000153"
 }
 ```
 
@@ -163,7 +157,7 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 
 ### Cadastrar Transações do dia
 
-`POST` /aishoppingbuddy/api/parceiro/transacoes
+`POST` /aishoppingbuddy/api/parceiro/{id}/transacoes
 
 *Campos de requisição*
 
@@ -173,90 +167,72 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 
 *Exemplo de requisição*
 ```
-{
-  "transacoes":[
-    {
-      "id":1247,
-      "valorTotal":10000.00,
-      "cep":'69312545',
-      "data": '2023-12-27T10:30',
-      "cancelado": False,
-      "parceiro": {
-        "id": 1364,
-        "nomeFantasia": 'MercadoLivre',
-        "dataEntrada": '2023-06-04',
-        "dataSaida": null,
-        "cnpj": '19951232000153'
-      },
-      "usuario":{
-        "id":4234,
-        "nome":'Pedro de Ferreira Silva',
-        "cpf":'90010571019',
-        "cep":'77826025',
-        "dataNascimento":'1998-06-21'
-        "genero":'M'
-      },
-      "produtos": [
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        },
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        }
-      ]
+[
+  {
+    "valorTotal":10000.00,
+    "cep":"69312545",
+    "data": "2023-12-27",
+    "cancelado": False,
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
     },
-    {
-      "id":1247,
-      "valorTotal":10000.00,
-      "cep":'69312545',
-      "data": '2023-12-27T10:30',
-      "cancelado": True,
-      "parceiro": {
-        "id": 1364,
-        "nomeFantasia": 'MercadoLivre',
-        "dataEntrada": '2023-06-04',
-        "dataSaida": null,
-        "cnpj": '19951232000153'
+    "produtoList": [
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
       },
-      "usuario":{
-        "id":4234,
-        "nome":'Pedro de Ferreira Silva',
-        "cpf":'90010571019',
-        "cep":'77826025',
-        "dataNascimento":'1998-06-21'
-        "genero":'M'
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      }
+    ]
+  },
+  {
+    "valorTotal":10000.00,
+    "cep":"69312545",
+    "data": "2023-12-27",
+    "cancelado": True,
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
+    },
+    "produtoList": [
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
       },
-      "produtos": [
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        },
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        }
-      ]
-    }
-  ]
-}
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      }
+    ]
+  }
+]
 ```
 
 *Resposta*
@@ -266,13 +242,100 @@ Entrega: Código fonte e documentação devem ser entregues via link de reposit�
 | 201    | transações do dia cadastradas com sucesso      |
 | 404    | não foi possível achar um parceiro com esse id |
 
-## RECOMENDAÇÃO
+### Listar Transações do Parceiro
 
-## Criar mensagem personalizada
+`GET` /aishoppingbuddy/api/parceiro/{id}/transacoes
 
-`POST` /aishoppingbuddy/api/parceiro/{id}/transacoes
+```
+[
+  {
+    "id":1274,
+    "valorTotal":10000.00,
+    "cep":"69312545",
+    "data": "2023-12-27",
+    "cancelado": False,
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
+    },
+    "parceiro":{
+      "id": 1364,
+      "nomeFantasia": "MercadoLivre",
+      "dataEntrada": "2023-06-04",
+      "dataSaida": null,
+      "cnpj": "19951232000153"
+    }
+    "produtoList": [
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      },
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      }
+    ]
+  },
+  {
+    "id":2731,
+    "valorTotal":10000.00,
+    "cep":"69312545",
+    "data": "2023-12-27",
+    "cancelado": True,
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
+    },
+    "parceiro":{
+      "id": 1364,
+      "nomeFantasia": "MercadoLivre",
+      "dataEntrada": "2023-06-04",
+      "dataSaida": null,
+      "cnpj": "19951232000153"
+    }
+    "produtoList": [
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      },
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      }
+    ]
+  }
+]
+```
 
-Cria uma recomendação no banco e cria a resposta do
+## Criar recomendação personalizada
+
+`POST` /aishoppingbuddy/api/parceiro/{idParceiro}/recomendacoes/{idUsarui}
+
+Cria uma recomendação baseada na API de machine learning com uma mensagem gerada pelo ChatGPT baseada nas transações enviadas e adiciona ela no banco de dados.
 
 *Campos de requisição*
 
@@ -282,96 +345,97 @@ Cria uma recomendação no banco e cria a resposta do
 
 *Exemplo de requisição*
 ```
-{
-  "transacoes":[
-    {
-      "id":1247,
-      "valorTotal":10000.00,
-      "cep":'69312545',
-      "data": '2023-12-27T10:30',
-      "cancelado": True,
-      "parceiro": {
-        "id": 1364,
-        "nomeFantasia": 'MercadoLivre',
-        "dataEntrada": '2023-06-04',
-        "dataSaida": null,
-        "cnpj": '19951232000153'
-      },
-      "usuario":{
-        "id":4234,
-        "nome":'Pedro de Ferreira Silva',
-        "cpf":'90010571019',
-        "cep":'77826025',
-        "dataNascimento":'1998-06-21'
-        "genero":'M'
-      },
-      "produtos": [
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        },
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        }
-      ]
+[
+  {
+    "id":1352,
+    "valorTotal":10000.00,
+    "cep":"69312545",
+    "data": "2023-12-27",
+    "cancelado": False,
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
     },
-    {
-      "id":1247,
-      "valorTotal":10000.00,
-      "cep":'69312545',
-      "data": '2023-12-27T10:30',
-      "cancelado": True,
-      "parceiro": {
-        "id": 1364,
-        "nomeFantasia": 'MercadoLivre',
-        "dataEntrada": '2023-06-04',
-        "dataSaida": null,
-        "cnpj": '19951232000153'
+    "produtoList": [
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
       },
-      "usuario":{
-        "id":4234,
-        "nome":'Pedro de Ferreira Silva',
-        "cpf":'90010571019',
-        "cep":'77826025',
-        "dataNascimento":'1998-06-21'
-        "genero":'M'
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      }
+    ]
+  },
+  {
+    "id":2123,
+    "valorTotal":10000.00,
+    "cep":"69312545",
+    "data": "2023-12-27",
+    "cancelado": True,
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
+    },
+    "produtos": [
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
       },
-      "produtos": [
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        },
-        {
-          "id": 5641,
-          "nome": 'Iphone 15 S',
-          "tipo": 'Celular',
-          "descricao": 'Celular Iphone Apple 15 S 128GB',
-          "categoria": 'Eletrônicos',
-          "valor": 5000.00
-        }
-      ]
-    }
-  ]
-}
+      {
+        "id": 5641,
+        "nome": "Iphone 15 S",
+        "tipo": "Celular",
+        "descricao": "Celular Iphone Apple 15 S 128GB",
+        "categoria": "Eletrônicos",
+        "valor": 5000.00
+      }
+    ]
+  }
+]
 ```
 
 *Exemplo de Resposta*
 ```
 {
-  "mensagem":'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy'
+  "id":4342,
+  "mensagem":"Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy"
+  "data":"2023-05-21",
+  "usuario":{
+    "id":4234,
+    "nome":"Pedro de Ferreira Silva",
+    "cpf":"90010571019",
+    "cep":"77826025",
+    "dataNascimento":"1998-06-21"
+    "genero":"M"
+  },
+  "parceiro":{
+    "id": 1364,
+    "nomeFantasia": "MercadoLivre",
+    "dataEntrada": "2023-06-04",
+    "dataSaida": null,
+    "cnpj": "19951232000153"
+  }
 }
 ```
 
@@ -390,215 +454,81 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 [
   {
-    "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
+    "id":2652,
+    "mensagem":"Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy"
+    "data":"2023-05-21",
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
+    },
+    "parceiro":{
+      "id": 1364,
+      "nomeFantasia": "MercadoLivre",
+      "dataEntrada": "2023-06-04",
+      "dataSaida": null,
+      "cnpj": "19951232000153"
+    }
   },
   {
-    "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-          "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
+    "id":4342,
+    "mensagem":"Olá Maria, Os iPhones são a escolha perfeita para uma experiência excepcional em smartphones. Com design elegante, desempenho incrível e câmeras impressionantes, os iPhones oferecem qualidade e praticidade. Além disso, a integração perfeita com o ecossistema Apple e a segurança avançada dos seus dados tornam esses dispositivos ainda mais atrativos. Se você busca um celular de alta qualidade e confiabilidade, os iPhones são a opção ideal. Não deixe de conferir os modelos disponíveis e aproveitar todos os benefícios que eles oferecem. Atenciosamente, AI Shopping Buddy",
+    "data":"2023-06-04",
+    "usuario":{
+      "id":6544,
+      "nome":"Maria Nacimento",
+      "cpf":"87113837042",
+      "cep":"68503280",
+      "dataNascimento":"1981-12-11"
+      "genero":"F"
+    },
+    "parceiro":{
+      "id": 1364,
+      "nomeFantasia": "MercadoLivre",
+      "dataEntrada": "2023-06-04",
+      "dataSaida": null,
+      "cnpj": "19951232000153"
+    }
   },
+]
+```
+
+*Resposta*
+
+| código | descrição                             |
+|--------|---------------------------------------|
+| 200    | os dados foram retornados com sucesso |
+
+### Listar Recomendações por usuário
+
+`GET` /aishoppingbuddy/api/recomendacoes/usuario/{id}
+
+*Exemplo de resposta*
+```
+[
+  {
+    "id":2652,
+    "mensagem":"Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy"
+    "data":"2023-05-21",
+    "usuario":{
+      "id":4234,
+      "nome":"Pedro de Ferreira Silva",
+      "cpf":"90010571019",
+      "cep":"77826025",
+      "dataNascimento":"1998-06-21"
+      "genero":"M"
+    },
+    "parceiro":{
+      "id": 1364,
+      "nomeFantasia": "MercadoLivre",
+      "dataEntrada": "2023-06-04",
+      "dataSaida": null,
+      "cnpj": "19951232000153"
+    }
+  }
 ]
 ```
 
@@ -616,214 +546,24 @@ Cria uma recomendação no banco e cria a resposta do
 ```
 [
   {
-    "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
-  },
-  {
-    "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
+    "id":4342,
+    "mensagem":"Olá Maria, Os iPhones são a escolha perfeita para uma experiência excepcional em smartphones. Com design elegante, desempenho incrível e câmeras impressionantes, os iPhones oferecem qualidade e praticidade. Além disso, a integração perfeita com o ecossistema Apple e a segurança avançada dos seus dados tornam esses dispositivos ainda mais atrativos. Se você busca um celular de alta qualidade e confiabilidade, os iPhones são a opção ideal. Não deixe de conferir os modelos disponíveis e aproveitar todos os benefícios que eles oferecem. Atenciosamente, AI Shopping Buddy",
+    "data":"2023-06-04",
+    "usuario":{
+      "id":6544,
+      "nome":"Maria Nacimento",
+      "cpf":"87113837042",
+      "cep":"68503280",
+      "dataNascimento":"1981-12-11"
+      "genero":"F"
+    },
+    "parceiro":{
+      "id": 1364,
+      "nomeFantasia": "MercadoLivre",
+      "dataEntrada": "2023-06-04",
+      "dataSaida": null,
+      "cnpj": "19951232000153"
+    }
   },
 ]
 ```
@@ -834,117 +574,32 @@ Cria uma recomendação no banco e cria a resposta do
 |--------|---------------------------------------|
 | 200    | os dados foram retornados com sucesso |
 
-### Listar Recomendação por id
+### Achar Recomendação por id
 
 `GET` /aishoppingbuddy/api/recomendacoes/id/{id}
 
 *Exemplo de resposta*
 ```
 {
+  "id":4342,
+  "mensagem":"Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy"
+  "data":"2023-05-21",
+  "usuario":{
+    "id":4234,
+    "nome":"Pedro de Ferreira Silva",
+    "cpf":"90010571019",
+    "cep":"77826025",
+    "dataNascimento":"1998-06-21"
+    "genero":"M"
+  },
+  "parceiro":{
     "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
+    "nomeFantasia": "MercadoLivre",
+    "dataEntrada": "2023-06-04",
+    "dataSaida": null,
+    "cnpj": "19951232000153"
   }
+}
 ```
 
 *Resposta*
@@ -952,214 +607,4 @@ Cria uma recomendação no banco e cria a resposta do
 | código | descrição                             |
 |--------|---------------------------------------|
 | 200    | os dados foram retornados com sucesso |
-
-### Listar Recomendações por usuário
-
-`GET` /aishoppingbuddy/api/recomendacoes/usuario/{id}
-
-*Exemplo de resposta*
-```
-[
-  {
-    "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
-  },
-  {
-    "id": 1364,
-    "data": '2023-06-04',
-    "mensagem": 'Olá Pedro,Espero que esteja bem! Se você está procurando um celular novo, eu recomendo fortemente os dispositivos da Samsung. Eles oferecem uma excelente combinação de desempenho, qualidade de construção e recursos. Se você está procurando um celular com tela grande e excelente câmera, o Samsung Galaxy S21 Ultra é uma ótima escolha. Para quem quer algo um pouco mais acessível, o Samsung Galaxy A52 é uma ótima opção com excelente bateria e desempenho.De qualquer forma, os celulares da Samsung são uma escolha confiável e certamente não vão te decepcionar. Atenciosamente, AI Chatting Buddy',
-    "transacoes": [
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-        },
-        {
-        "id":1247,
-        "valorTotal":10000.00,
-        "cep":'69312545',
-        "data": '2023-12-27T10:30',
-        "cancelado": True,
-        "parceiro": {
-          "id": 1364,
-          "nomeFantasia": 'MercadoLivre',
-          "dataEntrada": '2023-06-04',
-          "dataSaida": null,
-          "cnpj": '19951232000153'
-        },
-        "usuario":{
-          "id":4234,
-          "nome":'Pedro de Ferreira Silva',
-          "cpf":'90010571019',
-          "cep":'77826025',
-          "dataNascimento":'1998-06-21'
-          "genero":'M'
-        },
-        "produtos": [
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            },
-            {
-            "id": 5641,
-            "nome": 'Iphone 15 S',
-            "tipo": 'Celular',
-            "descricao": 'Celular Iphone Apple 15 S 128GB',
-            "categoria": 'Eletrônicos',
-            "valor": 5000.00
-            }
-        ]
-      }
-    ],
-    "produtos": [
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      },
-      {
-        "id": 5641,
-        "nome": 'Iphone 15 S',
-        "tipo": 'Celular',
-        "descricao": 'Celular Iphone Apple 15 S 128GB',
-        "categoria": 'Eletrônicos',
-        "valor": 5000.00
-      }
-    ]
-  },
-]
-```
-
-*Resposta*
-
-| código | descrição                             |
-|--------|---------------------------------------|
-| 200    | os dados foram retornados com sucesso |
+| 403    | essa recomendação é de outro parceiro |
