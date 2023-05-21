@@ -1,9 +1,7 @@
 package com.aishoppingbuddy.controller;
 
-import com.aishoppingbuddy.model.Produto;
-import com.aishoppingbuddy.model.Recomendacao;
-import com.aishoppingbuddy.model.Transacao;
-import com.aishoppingbuddy.model.Usuario;
+import com.aishoppingbuddy.model.*;
+import com.aishoppingbuddy.repository.ParceiroRepository;
 import com.aishoppingbuddy.repository.ProdutoRepository;
 import com.aishoppingbuddy.repository.RecomendacaoRepository;
 import com.aishoppingbuddy.repository.UsuarioRepository;
@@ -34,6 +32,10 @@ public class RecomendacaoController {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    @Autowired
+    ParceiroRepository parceiroRepository;
+
+    /*
     @PostMapping
     public ResponseEntity<Recomendacao> criarRecomendacao(@RequestBody List<Transacao> transacaoList) {
         // DADOS GERADOS PELA API DE MACHINE LEARNING
@@ -50,34 +52,28 @@ public class RecomendacaoController {
         );
         log.info("recuperado dados da api");
         Usuario usuario = transacaoList.get(0).getUsuario();
+        Parceiro parceiro = transacaoList.get(0).getParceiro();
         Recomendacao recomendacao = Recomendacao
                 .builder()
                 .mensagem(mensagem)
                 .data(data)
                 .build();
         recomendacaoRepository.save(recomendacao);
-        for (Produto p :
-                produtoList) {
-            p.setRecomendacao(recomendacao);
-            log.info("salvando produto "+p.getId()+" em recomendacao "+recomendacao.getId());
-        }
-//        if (usuario.getRecomendacaoList() == null) {
-//            usuario.setRecomendacaoList(List.of(recomendacao));
-//            log.info("lista de recomendacoees no usuario "+usuario.getId()+" nao encontrada, criando a lista.");
-//        } else {
-//            usuario.getRecomendacaoList().add(recomendacao);
-//        }
         recomendacao.setProdutoList(produtoList);
         log.info("salvando produtos na recomendacao "+recomendacao.getId());
         recomendacao.setUsuario(usuario);
         log.info("salvando usuario "+usuario.getId()+" na recomendacao "+recomendacao.getId());
+        recomendacao.setParceiro(parceiro);
+        log.info("salvando parceiro "+parceiro.getId()+" na recomendacao "+recomendacao.getId());
         produtoRepository.saveAll(produtoList);
         log.info("produtos salvos");
         usuarioRepository.save(usuario);
         log.info("usuario salvo");
+        parceiroRepository.save(parceiro);
+        log.info("parceiro salvo");
         log.info("recomendacao salva");
         return ResponseEntity.ok(recomendacao);
 
     }
-
+    */
 }

@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -95,5 +96,57 @@ public class ParceiroController {
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         return transacaoRepository.findAll();
     }
+
+    @PostMapping("{idParceiro}/recomendacoes/{idUsuario}")
+    public ResponseEntity<Recomendacao> criarRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idUsuario, @RequestBody List<Transacao> transacaoList) {
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        var usuarioResult = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
+
+        // DADOS GERADOS PELA API DE MACHINE LEARNING
+        String mensagem = "MENSAGEM GERADA PELO CHATGPT";
+        LocalDate data = LocalDate.now();
+        List<Produto> produtoList = List.of(
+                Produto.builder()
+                        .nome("NOME DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .tipo("TIPO DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .valor(50)
+                        .descricao("DESCRICAO DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .categoria("CATEGORIA DO PRODUTO RECOMENDADO PELO MACHINE LEARNING")
+                        .build()
+        );
+        produtoRepository.saveAll(produtoList);
+        log.info("recuperado dados da api");
+
+        Recomendacao recomendacao = Recomendacao
+                .builder()
+                .mensagem(mensagem)
+                .data(data)
+                .parceiro(parceiroResult)
+                .usuario(usuarioResult)
+                .produtoList(produtoList)
+                .build();
+
+        recomendacaoRepository.save(recomendacao);
+        log.info("recomendacao "+recomendacao.getId()+" salva");
+        return ResponseEntity.ok(recomendacao);
+    }
+
+    @GetMapping("{id}/recomendacoes")
+    public List<Recomendacao> listarTodasRecomendacoes(@PathVariable Long id) {
+        var parceiroResult = parceiroRepository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        return recomendacaoRepository.findByParceiroId(id);
+    }
+
+//    @GetMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
+//    public List<Recomendacao> listarRecomendacoesUsuario(@PathVariable Long idParceiro, @PathVariable Long idUsuario) {
+//        var parceiroResult = parceiroRepository.findById(idParceiro)
+//                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+//        var usuarioResult = usuarioRepository.findById(idUsuario)
+//                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
+//        return null;
+//    }
 
 }
