@@ -97,7 +97,7 @@ public class ParceiroController {
         return transacaoRepository.findAll();
     }
 
-    @PostMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
+    @PostMapping("{idParceiro}/recomendacoes/{idUsuario}")
     public ResponseEntity<Recomendacao> criarRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idUsuario, @RequestBody List<Transacao> transacaoList) {
         var parceiroResult = parceiroRepository.findById(idParceiro)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
