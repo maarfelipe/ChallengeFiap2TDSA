@@ -151,7 +151,69 @@ BEGIN
 END;
 select * from t_aisb_erro;
 
+--------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE atualizar_encerramento_parceiro (
+    p_cd_parceiro NUMBER,
+    p_dt_encerramento DATE
+) IS
+    v_cd_parceiro t_aisb_parceiro_negocio.cd_parceiro%TYPE;
+    v_cd_erro NUMBER(3);
+BEGIN
+    -- Verificar se o parceiro existe pelo código
+    SELECT cd_parceiro INTO v_cd_parceiro
+    FROM t_aisb_parceiro_negocio
+    WHERE cd_parceiro = p_cd_parceiro;
+
+    -- Atualizar a data de encerramento
+    UPDATE t_aisb_parceiro_negocio
+    SET dt_encerramento_parceiro = p_dt_encerramento
+    WHERE cd_parceiro = v_cd_parceiro;
+
+    COMMIT;
+
+    -- Obter o próximo valor para cd_erro
+    SELECT COALESCE(MAX(cd_erro) + 1, 1) INTO v_cd_erro FROM t_aisb_erro;
+
+    -- Inserir registro de erro com novo valor de cd_erro
+    INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
+    VALUES (v_cd_erro, 'Data de encerramento atualizada com sucesso', SYSDATE, USER);
+
+    DBMS_OUTPUT.PUT_LINE('Data de encerramento atualizada com sucesso.');
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        -- Parceiro não encontrado, registrar erro na tabela t_aisb_erro
+        SELECT COALESCE(MAX(cd_erro) + 1, 1) INTO v_cd_erro FROM t_aisb_erro;
+        INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
+        VALUES (v_cd_erro, 'Parceiro não encontrado para atualização', SYSDATE, USER);
+        COMMIT;
+
+        DBMS_OUTPUT.PUT_LINE('Parceiro não encontrado. Erro registrado na tabela de erro.');
+    WHEN OTHERS THEN
+        -- Erro ao atualizar data de encerramento, registrar erro na tabela t_aisb_erro
+        SELECT COALESCE(MAX(cd_erro) + 1, 1) INTO v_cd_erro FROM t_aisb_erro;
+        INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
+        VALUES (v_cd_erro, 'Erro ao atualizar data de encerramento', SYSDATE, USER);
+        COMMIT;
+
+        DBMS_OUTPUT.PUT_LINE('Erro ao atualizar data de encerramento. Erro registrado na tabela de erro.');
+END atualizar_encerramento_parceiro;
+/
 
 
+
+DECLARE
+    v_cd_parceiro NUMBER(3);
+    v_dt_encerramento DATE := TO_DATE('2023-08-31', 'YYYY-MM-DD'); -- Data de encerramento a ser atualizada
+BEGIN
+    -- Solicitar informações ao usuário
+    v_cd_parceiro := &v_cd_parceiro;
+
+    -- Chamar o procedimento para atualizar a data de encerramento do parceiro
+    atualizar_encerramento_parceiro(v_cd_parceiro, v_dt_encerramento);
+END;
+
+select * from t_aisb_parceiro_negocio;
+select * from t_aisb_erro;
 
 
