@@ -54,6 +54,7 @@ public class ParceiroController {
     @PostMapping
     public ResponseEntity<Parceiro> create(@RequestBody @Valid Parceiro parceiro){
         log.info("cadastrando parceiro");
+        parceiro.setDataEntrada(LocalDate.now());
         parceiroRepository.save(parceiro);
         return ResponseEntity.status(HttpStatus.CREATED).body(parceiro);
     }
@@ -99,6 +100,7 @@ public class ParceiroController {
         return transacaoRepository.findAll();
     }
 
+    @Deprecated
     @PostMapping("{idParceiro}/recomendacoes/{idUsuario}")
     public ResponseEntity<Recomendacao> criarRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idUsuario, @RequestBody List<Transacao> transacaoList) {
         var parceiroResult = parceiroRepository.findById(idParceiro)

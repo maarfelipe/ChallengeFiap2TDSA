@@ -1,5 +1,6 @@
 package com.aishoppingbuddy.controller;
 
+import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.model.Produto;
 import com.aishoppingbuddy.model.Recomendacao;
 import com.aishoppingbuddy.repository.RecomendacaoRepository;
@@ -33,8 +34,14 @@ public class RecomendacaoController {
     TokenService tokenService;
 
     @CrossOrigin
-    @PostMapping("criar")
-    public ResponseEntity<Object> criarRecomendacao(@RequestHeader("Authorization") String header, @PathVariable Long idUsuario, @RequestBody @Valid List<Produto> produtoList) {
+    @GetMapping
+    public List<Recomendacao> load(){
+        return recomendacaoRepository.findAll();
+    }
+
+    @CrossOrigin
+    @PostMapping("{idUsuario}")
+    public ResponseEntity<Object> criarRecomendacao(@RequestHeader("Authorization") String header, @PathVariable Long idUsuario, @RequestBody @Valid Recomendacao recomendacao) {
 
         log.info("buscando usuario");
         var funcionarioResult = tokenService.validate(tokenService.getToken(header));
@@ -43,16 +50,11 @@ public class RecomendacaoController {
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
 
         String mensagem = "MENSAGEM GERADA PELO CHATGPT";
-        LocalDate data = LocalDate.now();
 
-        Recomendacao recomendacao = Recomendacao
-                .builder()
-                .mensagem(mensagem)
-                .data(data)
-                .parceiro(parceiroResult)
-                .usuario(usuarioResult)
-                .produtoList(produtoList)
-                .build();
+        recomendacao.setParceiro(parceiroResult);
+        recomendacao.setUsuario(usuarioResult);
+        recomendacao.setMensagem(mensagem);
+        recomendacao.setData(LocalDate.now());
 
         recomendacaoRepository.save(recomendacao);
         log.info("recomendacao "+recomendacao.getId()+" salva");
