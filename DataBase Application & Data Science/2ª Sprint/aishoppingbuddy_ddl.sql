@@ -208,6 +208,17 @@ insert into t_aisb_transacao values(159, 100009, 109, 149, 1, 239.99, 29055355, 
 
 
 
+drop table t_aisb_erro cascade constraints;
+Create table t_aisb_erro(
+    cd_erro number(3),
+    nm_erro varchar(50),
+    dt_ocorrencia date,
+    nm_usuario varchar(50)
+);
+commit;
+
+
+
 
 
 
