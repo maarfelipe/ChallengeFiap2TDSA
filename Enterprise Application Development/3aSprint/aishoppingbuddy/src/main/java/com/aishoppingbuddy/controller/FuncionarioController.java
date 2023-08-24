@@ -1,14 +1,18 @@
 package com.aishoppingbuddy.controller;
 
+import com.aishoppingbuddy.model.Credencial;
 import com.aishoppingbuddy.model.Funcionario;
 import com.aishoppingbuddy.model.Funcionario;
 import com.aishoppingbuddy.repository.FuncionarioRepository;
+import com.aishoppingbuddy.service.TokenService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -22,6 +26,15 @@ public class FuncionarioController {
     
     @Autowired
     FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    AuthenticationManager manager;
+
+    @Autowired
+    PasswordEncoder encoder;
+
+    @Autowired
+    TokenService tokenService;
     
     @GetMapping
     public List<Funcionario> load() { return funcionarioRepository.findAll(); }
@@ -34,11 +47,22 @@ public class FuncionarioController {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping
-    public ResponseEntity<Funcionario> create(@RequestBody @Valid Funcionario funcionario){
+    @CrossOrigin
+    @PostMapping("cadastrar")
+    public ResponseEntity<Object> cadastro(@RequestBody @Valid Funcionario funcionario) {
         log.info("cadastrando funcionario");
+        funcionario.setSenha(encoder.encode(funcionario.getSenha()));
         funcionarioRepository.save(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED).body(funcionario);
+    }
+
+    @CrossOrigin
+    @PostMapping("login")
+    public ResponseEntity<Object> login(@RequestBody Credencial credencial) {
+        manager.authenticate(credencial.toAuthentication());
+        log.info("autenticado");
+        var token = tokenService.generateToken(credencial);
+        return ResponseEntity.ok(token);
     }
 
     @DeleteMapping("{id}")
