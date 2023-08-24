@@ -78,6 +78,9 @@ public class ParceiroController {
         return ResponseEntity.ok(parceiro);
     }
 
+    // Não estamos usando os endpoints de transações, pois eles apenas serviam para o ML.
+
+    @Deprecated
     @PostMapping("{id}/transacoes")
     public ResponseEntity<Parceiro> cadastrarTransacoes(@PathVariable Long id, @RequestBody List<Transacao> transacaoList) {
         var result = parceiroRepository.findById(id)
@@ -92,14 +95,13 @@ public class ParceiroController {
         }
         return ResponseEntity.ok(result);
     }
-
+    @Deprecated
     @GetMapping("{id}/transacoes")
     public List<Transacao> listarTransacoes(@PathVariable Long id) {
         var parceiroResult = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         return transacaoRepository.findAll();
     }
-
     @Deprecated
     @PostMapping("{idParceiro}/recomendacoes/{idUsuario}")
     public ResponseEntity<Recomendacao> criarRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idUsuario, @RequestBody List<Transacao> transacaoList) {
@@ -137,6 +139,7 @@ public class ParceiroController {
         return ResponseEntity.ok(recomendacao);
     }
 
+    @Deprecated
     @GetMapping("{id}/recomendacoes")
     public List<Recomendacao> listarTodasRecomendacoes(@PathVariable Long id) {
         var parceiroResult = parceiroRepository.findById(id)
@@ -144,6 +147,7 @@ public class ParceiroController {
         return recomendacaoRepository.findByParceiro(parceiroResult);
     }
 
+    @Deprecated
     @GetMapping("{idParceiro}/recomendacoes/usuario/{idUsuario}")
     public List<Recomendacao> listarRecomendacoesUsuario(@PathVariable Long idParceiro, @PathVariable Long idUsuario) {
         var parceiroResult = parceiroRepository.findById(idParceiro)
@@ -153,6 +157,7 @@ public class ParceiroController {
         return recomendacaoRepository.findByParceiroAndUsuario(parceiroResult, usuarioResult);
     }
 
+    @Deprecated
     @GetMapping("{idParceiro}/recomendacoes/data/{data}")
     public List<Recomendacao> listarRecomendacoesData(@PathVariable Long idParceiro, @PathVariable LocalDate data) {
         var parceiroResult = parceiroRepository.findById(idParceiro)
@@ -160,6 +165,7 @@ public class ParceiroController {
         return recomendacaoRepository.findByParceiroAndData(parceiroResult,data);
     }
 
+    @Deprecated
     @GetMapping("{idParceiro}/recomendacoes/{idRecomendacao}")
     public Recomendacao acharRecomendacao(@PathVariable Long idParceiro, @PathVariable Long idRecomendacao) {
         var parceiroResult = parceiroRepository.findById(idParceiro)

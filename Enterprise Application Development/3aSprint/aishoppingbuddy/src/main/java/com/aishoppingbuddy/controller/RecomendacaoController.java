@@ -10,6 +10,10 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +39,23 @@ public class RecomendacaoController {
 
     @CrossOrigin
     @GetMapping
-    public List<Recomendacao> load(){
-        return recomendacaoRepository.findAll();
+    public Page<Recomendacao> listar(@RequestHeader("Authorization") String header, @PageableDefault(size = 5) Pageable pageable) {
+        log.info("buscando funcionario");
+        var funcionario = tokenService.validate(tokenService.getToken(header));
+        var parceiro = funcionario.getParceiro();
+        var listRecomendacao = recomendacaoRepository.findByParceiro(parceiro);
+        int start = (int) pageable.getOffset();
+        int end = (int) (Math.min((start + pageable.getPageSize()), listRecomendacao.size()));
+        return new PageImpl<Recomendacao>(listRecomendacao.subList(start, end), pageable, listRecomendacao.size());
+    }
+
+    @CrossOrigin
+    @GetMapping("{id}")
+    public ResponseEntity<Recomendacao> index(@PathVariable Long id) {
+        log.info("buscando recomendacao " + id);
+        var result = recomendacaoRepository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Recomendação não Encontrado"));
+        return ResponseEntity.ok(result);
     }
 
     @CrossOrigin
@@ -60,6 +79,20 @@ public class RecomendacaoController {
         log.info("recomendacao "+recomendacao.getId()+" salva");
         return ResponseEntity.ok(recomendacao);
 
+    }
+
+    @CrossOrigin
+    @GetMapping("usuario/{idUsuario}")
+    public Page<Recomendacao> listarUsuario(@RequestHeader("Authorization") String header, @PathVariable long idUsuario, @PageableDefault(size = 5) Pageable pageable) {
+        log.info("buscando funcionario");
+        var funcionario = tokenService.validate(tokenService.getToken(header));
+        var parceiro = funcionario.getParceiro();
+        var usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
+        var listRecomendacao = recomendacaoRepository.findByParceiroAndUsuario(parceiro,usuario);
+        int start = (int) pageable.getOffset();
+        int end = (int) (Math.min((start + pageable.getPageSize()), listRecomendacao.size()));
+        return new PageImpl<Recomendacao>(listRecomendacao.subList(start, end), pageable, listRecomendacao.size());
     }
 
 }
