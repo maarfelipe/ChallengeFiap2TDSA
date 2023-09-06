@@ -58,5 +58,10 @@ public class UsuarioController {
         usuarioRepository.save(usuario);
         return ResponseEntity.ok(usuario);
     }
-    
+
+    @GetMapping("nome/{nome}")
+    public List<Usuario> listByName(@PathVariable String nome) {
+        return usuarioRepository.findByNome(nome);
+    }
+
 }

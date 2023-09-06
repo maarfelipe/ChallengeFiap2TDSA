@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Item = ({item}) => {
@@ -49,7 +50,7 @@ const Item = ({item}) => {
         }
     });
 
-    const titulo = item.titulo;
+    const titulo = item.produtoList[0].nome;
     const mensagem = item.mensagem;
 
     return (
@@ -121,38 +122,25 @@ const List = ({ navigation, route }) => {
         },
     });
 
-    const DATA = [
-        {
-            id:1,
-            titulo:'Tênis Nike Revolution Next nature',
-            mensagem:'Fala João! Só passando aqui rapidinho pra te\nrecomendar o Tênis Nike... '
-        },
-        {
-            id:2,
-            titulo:'Tênis Nike Revolution Next nature',
-            mensagem:'Fala João! Só passando aqui rapidinho pra te\nrecomendar o Tênis Nike... '
-        },
-        {
-            id:3,
-            titulo:'Tênis Nike Revolution Next nature',
-            mensagem:'Fala João! Só passando aqui rapidinho pra te\nrecomendar o Tênis Nike... '
-        },
-        {
-            id:4,
-            titulo:'Tênis Nike Revolution Next nature',
-            mensagem:'Fala João! Só passando aqui rapidinho pra te\nrecomendar o Tênis Nike... '
-        },
-        {
-            id:5,
-            titulo:'Tênis Nike Revolution Next nature',
-            mensagem:'Fala João! Só passando aqui rapidinho pra te\nrecomendar o Tênis Nike... '
-        },
-        {
-            id:6,
-            titulo:'Tênis Nike Revolution Next nature',
-            mensagem:'Fala João! Só passando aqui rapidinho pra te\nrecomendar o Tênis Nike... '
-        },
-    ]
+    const [lista, setLista] = useState([]);
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbDFAZ21haWwuY29tIiwiaXNzIjoiQUlTaG9wcGluZ0J1ZGR5IiwiZXhwIjoxNjk0MDIxNDU2fQ.L7nRddRh-x6UJ3FPOX9hkYIoNV96yznUnSSXwxmL4ks"
+
+    const fetchData = () => {
+        axios.request({
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+            method: "GET",
+            url: `http://10.0.2.2:8080/aishoppingbuddy/api/recomendacao`
+        }).then(response => {
+            setLista(response.data.content);
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <View>
@@ -171,7 +159,7 @@ const List = ({ navigation, route }) => {
                 </TouchableOpacity>
             </View>
             <FlatList
-                data={DATA}
+                data={lista}
                 renderItem={props => <Item navigation={navigation} {...props} />}
                 keyExtractor={item => item.id}
             />

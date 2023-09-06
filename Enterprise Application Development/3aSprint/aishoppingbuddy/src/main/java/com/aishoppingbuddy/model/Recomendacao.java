@@ -29,7 +29,7 @@ public class Recomendacao {
     private LocalDate data;
 
     @OneToMany(mappedBy = "recomendacao")
-    @JsonIgnore
+    //@JsonIgnore
     private List<Produto> produtoList;
 
     @ManyToOne

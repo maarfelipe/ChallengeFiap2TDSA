@@ -3,6 +3,7 @@ package com.aishoppingbuddy.controller;
 import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.model.Produto;
 import com.aishoppingbuddy.model.Recomendacao;
+import com.aishoppingbuddy.repository.ProdutoRepository;
 import com.aishoppingbuddy.repository.RecomendacaoRepository;
 import com.aishoppingbuddy.repository.UsuarioRepository;
 import com.aishoppingbuddy.service.TokenService;
@@ -31,6 +32,9 @@ public class RecomendacaoController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    ProdutoRepository produtoRepository;
 
     Logger log = LoggerFactory.getLogger(getClass());
 
@@ -68,6 +72,8 @@ public class RecomendacaoController {
         var usuarioResult = usuarioRepository.findById(idUsuario)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
 
+
+
         String mensagem = "MENSAGEM GERADA PELO CHATGPT";
 
         recomendacao.setParceiro(parceiroResult);
@@ -77,6 +83,13 @@ public class RecomendacaoController {
 
         recomendacaoRepository.save(recomendacao);
         log.info("recomendacao "+recomendacao.getId()+" salva");
+
+        for (Produto produto:recomendacao.getProdutoList()) {
+            produto.setRecomendacao(recomendacao);
+            produtoRepository.save(produto);
+            log.info("salvando produto "+produto.getId()+" na recomendacao "+recomendacao.getId());
+        }
+
         return ResponseEntity.ok(recomendacao);
 
     }
