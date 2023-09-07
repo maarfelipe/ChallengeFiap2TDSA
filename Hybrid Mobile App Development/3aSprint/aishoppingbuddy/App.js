@@ -4,7 +4,7 @@ import { Home } from './Screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { Image, View } from 'react-native';
-import { List } from './Screens/List';
+import Recomendacao from './Screens/Recomendacao';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +21,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="home" component={Home} options={{ headerTitle: () =>  <Logo />}} />
-        <Stack.Screen name="list" component={List} options={{ headerTitle: 'Todas as Recomendações'}} />
+        <Stack.Screen name="recomendacao" component={Recomendacao} options={{ headerTitle: 'Todas as Recomendações'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -62,10 +62,10 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         produtoRepository.deleteAll();
         produtoRepository.saveAll(List.of(
-                Produto.builder().nome("nome1").tipo("tipo1").categoria("categoria1").valor(10.10).descricao("descricao1").parceiro(parceiro1).build(),
-                Produto.builder().nome("nome2").tipo("tipo2").categoria("categoria2").valor(20.20).descricao("descricao2").parceiro(parceiro1).build(),
-                Produto.builder().nome("nome3").tipo("tipo3").categoria("categoria3").valor(30.30).descricao("descricao3").parceiro(parceiro2).build(),
-                Produto.builder().nome("nome4").tipo("tipo4").categoria("categoria4").valor(40.40).descricao("descricao4").parceiro(parceiro2).build()
+                Produto.builder().nome("nome1").tipo("tipo1").categoria("categoria1").valor(10.10).descricao("descricao1").parceiro(parceiro1).recomendacaoList(List.of()).build(),
+                Produto.builder().nome("nome2").tipo("tipo2").categoria("categoria2").valor(20.20).descricao("descricao2").parceiro(parceiro1).recomendacaoList(List.of()).build(),
+                Produto.builder().nome("nome3").tipo("tipo3").categoria("categoria3").valor(30.30).descricao("descricao3").parceiro(parceiro2).recomendacaoList(List.of()).build(),
+                Produto.builder().nome("nome4").tipo("tipo4").categoria("categoria4").valor(40.40).descricao("descricao4").parceiro(parceiro2).recomendacaoList(List.of()).build()
         ));
     }
 

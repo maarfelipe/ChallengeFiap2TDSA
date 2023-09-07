@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,10 +41,9 @@ public class Produto {
     @JsonIgnore
     private Parceiro parceiro;
 
-    @ManyToOne
-    @JoinColumn(name = "cd_recomendacao")
+    @ManyToMany(mappedBy = "produtoList")
     @JsonIgnore
-    private Recomendacao recomendacao;
+    private List<Recomendacao> recomendacaoList;
 
     @ManyToOne
     @JoinColumn(name = "cd_transacao")

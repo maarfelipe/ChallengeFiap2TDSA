@@ -28,7 +28,11 @@ public class Recomendacao {
     @Column(name = "dt_mensagem", nullable = false)
     private LocalDate data;
 
-    @OneToMany(mappedBy = "recomendacao")
+    @ManyToMany
+    @JoinTable(
+            name = "possui",
+            joinColumns = @JoinColumn(name = "cd_recomendacao"),
+            inverseJoinColumns = @JoinColumn(name = "cd_produto"))
     //@JsonIgnore
     private List<Produto> produtoList;
 

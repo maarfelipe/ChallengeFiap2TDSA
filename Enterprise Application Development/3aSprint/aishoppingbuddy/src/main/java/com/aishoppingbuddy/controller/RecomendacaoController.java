@@ -85,9 +85,10 @@ public class RecomendacaoController {
         log.info("recomendacao "+recomendacao.getId()+" salva");
 
         for (Produto produto:recomendacao.getProdutoList()) {
-            produto.setRecomendacao(recomendacao);
-            produtoRepository.save(produto);
-            log.info("salvando produto "+produto.getId()+" na recomendacao "+recomendacao.getId());
+            Produto produtoSalvo = produtoRepository.getReferenceById(produto.getId());
+            produtoSalvo.getRecomendacaoList().add(recomendacao);
+            produtoRepository.save(produtoSalvo);
+            log.info("salvando produto "+produtoSalvo.getId()+" na recomendacao "+recomendacao.getId());
         }
 
         return ResponseEntity.ok(recomendacao);
