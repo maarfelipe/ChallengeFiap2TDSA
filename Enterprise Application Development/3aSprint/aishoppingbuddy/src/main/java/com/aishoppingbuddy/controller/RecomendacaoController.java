@@ -55,6 +55,18 @@ public class RecomendacaoController {
     }
 
     @CrossOrigin
+    @GetMapping("busca/{busca}")
+    public Page<Recomendacao> listarBusca(@RequestHeader("Authorization") String header, @PageableDefault(size = 5) Pageable pageable, @PathVariable String busca) {
+        log.info("buscando funcionario");
+        var funcionario = tokenService.validate(tokenService.getToken(header));
+        var parceiro = funcionario.getParceiro();
+        var listRecomendacao = recomendacaoRepository.findByParceiroAndTituloLikeIgnoreCase(parceiro,busca);
+        int start = (int) pageable.getOffset();
+        int end = (int) (Math.min((start + pageable.getPageSize()), listRecomendacao.size()));
+        return new PageImpl<Recomendacao>(listRecomendacao.subList(start, end), pageable, listRecomendacao.size());
+    }
+
+    @CrossOrigin
     @GetMapping("{id}")
     public ResponseEntity<Recomendacao> index(@PathVariable Long id) {
         log.info("buscando recomendacao " + id);

@@ -1,15 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import ListItem from "./ListItem";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const List = ({ navigation }) => {
 
     const [lista, setLista] = useState([]);
-
+    const [busca, setBusca] = useState("");
     
-    const fetchData = async () => {
+    const fetchList = async () => {
         const token = await AsyncStorage.getItem("token");
         await axios.request({
             headers: {
@@ -22,8 +22,27 @@ const List = ({ navigation }) => {
         });
     }
 
+    const fetchListSearch = async () => {
+        if (busca == "") {
+            console.log("sem busca:"+busca)
+            fetchList();
+        } else {
+            console.log("buscando:"+busca)
+            const token = await AsyncStorage.getItem("token");
+            await axios.request({
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+                method: "GET",
+                url: `http://10.0.2.2:8080/aishoppingbuddy/api/recomendacao/busca/${busca}`
+            }).then(response => {
+                setLista(response.data.content);
+            });
+        }
+    }
+
     useEffect(() => {
-        fetchData();
+        fetchList();
     }, []);
 
     return (
@@ -33,13 +52,14 @@ const List = ({ navigation }) => {
             <Image style={style.bg2} source={require('../../Assets/bg2.png')} />
             <Image style={style.bg3} source={require('../../Assets/bg3.png')} />
             <View style={style.filter}>
-                <TouchableOpacity style={style.button}>
-                    <Image style={style.icon} source={require('../../Assets/icon_sort.png')} />
-                    <Text style={style.buttonLabel}>ordenar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={style.button}>
-                    <Image style={style.icon} source={require('../../Assets/icon_filter.png')} />
-                    <Text style={style.buttonLabel}>filtrar</Text>
+                <TextInput
+                    placeholder="Buscar Recomendação"
+                    value={busca}
+                    onChangeText={setBusca}
+                    style={style.inputText}
+                />
+                <TouchableOpacity style={style.searchButton} onPress={fetchListSearch}>
+                    <Image style={style.buttonIcon} source={require('../../Assets/busca.png')} />
                 </TouchableOpacity>
             </View>
             <FlatList
@@ -55,6 +75,8 @@ const style = StyleSheet.create({
     filter: {
         margin:12,
         flexDirection:'row',
+        alignItems:"center",
+        justifyContent:"space-between"
     },
     button: {
         flexDirection:'row',
@@ -98,6 +120,30 @@ const style = StyleSheet.create({
         position:'absolute',
         left:0,
         top:550,
+    },
+    inputText:{
+        backgroundColor:"#EEE",
+        borderRadius:20,
+        width:330,
+        height:44,
+        borderColor:"#CCC",
+        borderWidth:2,
+        paddingLeft:12,
+        color:"#747980",
+        marginTop:4,
+        marginBottom:8,
+    },
+    searchButton:{
+        width:44,
+        height:44,
+        backgroundColor:"#2F37F1",
+        borderRadius:22,
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    buttonIcon:{
+        width:30,
+        height:30,
     },
 });
 

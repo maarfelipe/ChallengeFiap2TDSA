@@ -15,6 +15,8 @@ public interface RecomendacaoRepository extends JpaRepository<Recomendacao, Long
 
     List<Recomendacao> findByParceiro(Parceiro parceiro);
 
+    List<Recomendacao> findByParceiroAndTituloLikeIgnoreCase(Parceiro parceiro, String titulo);
+
     List<Recomendacao> findByParceiroAndUsuario(Parceiro parceiro, Usuario usuario);
 
     List<Recomendacao> findByParceiroAndData(Parceiro parceiro, LocalDate data);

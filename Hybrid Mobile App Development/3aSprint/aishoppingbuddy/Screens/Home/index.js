@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -7,7 +7,7 @@ const Home = (props) => {
     const { navigation } = props;
 
     return (
-        <View>
+        <ScrollView>
             <View style={style.layer}>
                 <LinearGradient
                     colors={['#881AFF','#32C7F1']}
@@ -16,11 +16,54 @@ const Home = (props) => {
                     style={[style.button,style.buttonLarge]}>
                     <TouchableOpacity style={style.touchLarge}>
                         <View>
-                            <Text style={style.title}>{'Make better\nshop carts'}</Text>
-                            <Text style={style.desc}>{'Confira as\nrecomendações enviadas'}</Text>
+                            <Text style={style.title}>{'Gerar\nRecomendação'}</Text>
                         </View>
                         <Image style={style.shadow} source={require('../../Assets/shadow.png')} />
                         <Image style={style.logo} source={require('../../Assets/logo_white.png')} />
+                    </TouchableOpacity>
+                </LinearGradient>
+            </View>
+            <View style={style.layer}>
+                <LinearGradient
+                    colors={['#A34FFF','#8515FF']}
+                    useAngle={true}
+                    angle={243}
+                    style={[style.button]}>
+                    <TouchableOpacity style={style.touch} onPress={() => navigation.push('recomendacao', {id: Math.random()})}>
+                        <Image style={style.image} source={require('../../Assets/icon1.png')} />
+                        <Text style={style.label}>{'Cadastrar\nProduto'}</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+                <LinearGradient
+                    colors={['#6369F4','#2F37F1']}
+                    useAngle={true}
+                    angle={243}
+                    style={[style.button]}>
+                    <TouchableOpacity style={style.touch}>
+                        <Image style={style.image} source={require('../../Assets/icon2.png')} />
+                        <Text style={style.label}>{'Buscar\nProdutos'}</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+            </View>
+            <View style={style.layer}>
+                <LinearGradient
+                    colors={['#63D4F4','#2FC6F1']}
+                    useAngle={true}
+                    angle={243}
+                    style={[style.button]}>
+                    <TouchableOpacity style={style.touch}>
+                        <Image style={style.image} source={require('../../Assets/icon4.png')} />
+                        <Text style={style.label}>{'Cadastrar\nUsuário'}</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+                <LinearGradient
+                    colors={['#5A5757','#231F20']}
+                    useAngle={true}
+                    angle={243}
+                    style={[style.button]}>
+                    <TouchableOpacity style={style.touch}>
+                        <Image style={style.image} source={require('../../Assets/icon5.png')} />
+                        <Text style={style.label}>{'Buscar\nUsuário'}</Text>
                     </TouchableOpacity>
                 </LinearGradient>
             </View>
@@ -67,9 +110,8 @@ const Home = (props) => {
                         <Text style={style.label}>{'Buscar por\nusuário'}</Text>
                     </TouchableOpacity>
                 </LinearGradient>
-                
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
