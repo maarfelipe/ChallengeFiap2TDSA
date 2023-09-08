@@ -7,20 +7,15 @@ const ItemDetails = ({route}) => {
     const { item } = route.params;
 
     const id = item.id;
-    const titulo = item.titulo;
-    const mensagem = item.mensagem;
-    const produtos = item.produtoList;
-    const usuario = item.usuario;
-    const data = item.data;
+    const nome = item.nome;
+    const cpf = item.cpf;
+    const cep = item.cep;
+    const genero = item.genero;
+    const data = item.dataNascimento;
+    const mensagem = `CPF: ${cpf}\nCEP: ${cep}\nGênero: ${genero}\n`;
 
     return (
         <View style={style.window}>
-            <View style={style.card}>
-                <Text style={style.text}>ID: {id}</Text>
-                <Text style={[style.title,style.titleSize]}>{titulo}</Text>
-                <Text style={style.text}>{mensagem}</Text>
-                {produtos.map(produto => <ProdutoDetails produto={produto} key={produto.id} />)}
-            </View>
             <View style={styleProduto.card}>
                 <View style={styleProduto.imageFrame}>
                     <View style={[styleProduto.image, style.usuario]}>
@@ -28,9 +23,14 @@ const ItemDetails = ({route}) => {
                     </View>
                 </View>
                 <View style={styleProduto.text}>
-                    <Text style={style.title}>ID de {usuario.nome}</Text>
-                    <Text style={style.text}>{usuario.id}</Text>
+                    <Text style={style.title}>ID de {nome}</Text>
+                    <Text style={style.text}>{id}</Text>
                 </View>
+            </View>
+            <View style={style.card}>
+                <Text style={style.text}>ID: {id}</Text>
+                <Text style={[style.title,style.titleSize]}>{nome}</Text>
+                <Text style={style.text}>{mensagem}</Text>
             </View>
             <View style={styleProduto.card}>
                 <View style={styleProduto.imageFrame}>
@@ -39,7 +39,7 @@ const ItemDetails = ({route}) => {
                     </View>
                 </View>
                 <View style={styleProduto.text}>
-                    <Text style={style.title}>Data da Recomendação</Text>
+                    <Text style={style.title}>Data da Nascimento</Text>
                     <Text style={style.text}>{data[2]}/{data[1]}/{data[0]}</Text>
                 </View>
             </View>
@@ -66,6 +66,7 @@ const style = StyleSheet.create({
         borderRadius:20,
         margin:10,
         padding:15,
+        width:360,
     },
     usuario:{
         backgroundColor:"#90F"
@@ -75,23 +76,6 @@ const style = StyleSheet.create({
         borderRadius:20
     },
 });
-
-const ProdutoDetails = (props) => {
-    const { produto } = props;
-    return(
-        <View style={styleProduto.card}>
-            <View style={styleProduto.imageFrame}>
-                <View style={styleProduto.image}>
-                    <Image style={styleProduto.imageIcon} source={require('../../Assets/Produto.png')} />
-                </View>
-            </View>
-            <View style={styleProduto.text}>
-                <Text style={style.title}>{produto.nome}</Text>
-                <Text style={style.text}>R${produto.valor}</Text>
-            </View>
-        </View>
-    );
-}
 
 const styleProduto = StyleSheet.create({
     card:{

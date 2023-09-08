@@ -6,16 +6,19 @@ export default ListItem = (props) => {
     const { navigation } = props;
     const { item } = props;
 
-    const titulo = item.titulo;
-    const mensagem = item.mensagem;
+    const id = item.id;
+    const nome = item.nome;
+    const cpf = item.cpf;
+
+    const mensagem = `ID: ${id}\nCPF: ${cpf}`
 
     return (
         <View style={style.card}>
-            <Text style={style.titulo}>{titulo}</Text>
+            <Text style={style.titulo}>{nome}</Text>
             <View style={style.bar}></View>
             <Text style={style.mensagem}>{mensagem}</Text>
             <View style={style.buttonView}>
-                <TouchableOpacity style={style.button}  onPress={() => navigation.push('itemRecomendacao', {id: item.id, navigation:navigation, item:item })}>
+                <TouchableOpacity style={style.button}  onPress={() => navigation.push('itemUsuario', {id: item.id, navigation:navigation, item:item })}>
                     <Text style={style.buttonLabel}>Saiba mais</Text>
                     <Image style={style.arrow} source={require('../../Assets/arrow.png')} />
                 </TouchableOpacity>
