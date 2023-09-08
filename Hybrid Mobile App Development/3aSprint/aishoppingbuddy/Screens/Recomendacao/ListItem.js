@@ -1,9 +1,10 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default ListItem = ({item}, props) => {
+export default ListItem = (props) => {
 
     const { navigation } = props;
+    const { item } = props;
 
     const titulo = item.produtoList[0].nome;
     const mensagem = item.mensagem;
@@ -14,9 +15,9 @@ export default ListItem = ({item}, props) => {
             <View style={style.bar}></View>
             <Text style={style.mensagem}>{mensagem}</Text>
             <View style={style.buttonView}>
-                <TouchableOpacity style={style.button}>
+                <TouchableOpacity style={style.button}  onPress={() => navigation.push('itemRecomendacao', {id: item.id, navigation:navigation, item:item })}>
                     <Text style={style.buttonLabel}>Saiba mais</Text>
-                    <Image style={style.arrow} source={require('../../Assets/arrow.png')} navigation={navigation}/>
+                    <Image style={style.arrow} source={require('../../Assets/arrow.png')} />
                 </TouchableOpacity>
             </View>
         </View>

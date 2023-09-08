@@ -22,6 +22,9 @@ public class Recomendacao {
     @Column(name = "cd_recomendacao", nullable = false)
     private long id;
 
+    @Column(name = "ds_titulo", nullable = false)
+    private String titulo;
+
     @Column(name = "ds_mensagem_recomendacao", nullable = false)
     private String mensagem;
 

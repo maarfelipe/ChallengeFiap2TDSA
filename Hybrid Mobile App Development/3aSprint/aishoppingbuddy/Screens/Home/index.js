@@ -14,7 +14,7 @@ const Home = (props) => {
                     useAngle={true}
                     angle={135}
                     style={[style.button,style.buttonLarge]}>
-                    <TouchableOpacity style={style.touchLarge} onPress={() => navigation.push('recomendacao', {id: Math.random()})}>
+                    <TouchableOpacity style={style.touchLarge}>
                         <View>
                             <Text style={style.title}>{'Make better\nshop carts'}</Text>
                             <Text style={style.desc}>{'Confira as\nrecomendações enviadas'}</Text>
@@ -30,7 +30,7 @@ const Home = (props) => {
                     useAngle={true}
                     angle={243}
                     style={[style.button]}>
-                    <TouchableOpacity style={style.touch}>
+                    <TouchableOpacity style={style.touch} onPress={() => navigation.push('recomendacao', {id: Math.random()})}>
                         <Image style={style.image} source={require('../../Assets/icon1.png')} />
                         <Text style={style.label}>{'Todas as\nRecomendações'}</Text>
                     </TouchableOpacity>

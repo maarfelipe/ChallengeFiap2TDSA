@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("aishoppingbuddy/api/recomendacao")
@@ -72,7 +73,7 @@ public class RecomendacaoController {
         var usuarioResult = usuarioRepository.findById(idUsuario)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
 
-
+        Optional<Produto> primeiroProduto = produtoRepository.findById(recomendacao.getProdutoList().get(0).getId());
 
         String mensagem = "MENSAGEM GERADA PELO CHATGPT";
 
@@ -80,6 +81,7 @@ public class RecomendacaoController {
         recomendacao.setUsuario(usuarioResult);
         recomendacao.setMensagem(mensagem);
         recomendacao.setData(LocalDate.now());
+        primeiroProduto.ifPresent(produto -> recomendacao.setTitulo(produto.getNome()));
 
         recomendacaoRepository.save(recomendacao);
         log.info("recomendacao "+recomendacao.getId()+" salva");
