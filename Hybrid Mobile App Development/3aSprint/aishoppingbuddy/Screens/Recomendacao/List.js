@@ -2,15 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ListItem from "./ListItem";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const List = ({ navigation }) => {
 
     const [lista, setLista] = useState([]);
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbDFAZ21haWwuY29tIiwiaXNzIjoiQUlTaG9wcGluZ0J1ZGR5IiwiZXhwIjoxNjk0MTU5ODExfQ.TESTt-DG4tOykKW0v4YE8GXIpcyhItFTFNsugc9l1qI"
-
-    const fetchData = () => {
-        axios.request({
+    
+    const fetchData = async () => {
+        const token = await AsyncStorage.getItem("token");
+        await axios.request({
             headers: {
                 Authorization: `Bearer ${token}`
             },

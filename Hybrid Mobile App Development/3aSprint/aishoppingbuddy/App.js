@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { Image, View } from 'react-native';
 import Recomendacao from './Screens/Recomendacao';
+import Acesso from './Screens/Acesso';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="home" component={Home} options={{ headerTitle: () =>  <Logo />}} />
+        <Stack.Screen name="acesso" component={Acesso} options={{headerShown: false}} />
+        <Stack.Screen name="home" component={Home} options={{ headerTitle: () =>  <Logo />, headerBackVisible: false}} />
         <Stack.Screen name="recomendacao" component={Recomendacao} options={{ headerTitle: 'Recomendações'}} />
       </Stack.Navigator>
     </NavigationContainer>
