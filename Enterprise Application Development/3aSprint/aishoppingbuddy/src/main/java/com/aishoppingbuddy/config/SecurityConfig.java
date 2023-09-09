@@ -25,7 +25,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests()
-                    .requestMatchers(HttpMethod.POST,"/aishoppingbuddy/api/funcionario/cadastrar").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/aishoppingbuddy/api/funcionario/cadastrar/{idParceiro}").permitAll()
                     .requestMatchers(HttpMethod.POST,"/aishoppingbuddy/api/funcionario/login").permitAll()
                     .requestMatchers(HttpMethod.POST,"/aishoppingbuddy/api/parceiro").permitAll()
                     .anyRequest().authenticated()

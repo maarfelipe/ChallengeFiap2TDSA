@@ -8,6 +8,7 @@ const Cadastro = (props) => {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [idParceiro, setIdParceiro] = useState("");
 
     const cadastro = async () => {
 
@@ -16,10 +17,11 @@ const Cadastro = (props) => {
             email: email,
             senha: senha
         }
-
+        console.log(credential)
+        console.log(`http://10.0.2.2:8080/aishoppingbuddy/api/funcionario/cadastrar/${idParceiro}`)
         try {
             const response = await axios.post(
-                `http://10.0.2.2:8080/aishoppingbuddy/api/funcionario/cadastrar`,
+                `http://10.0.2.2:8080/aishoppingbuddy/api/funcionario/cadastrar/${idParceiro}`,
                 credential
             );
             console.log(response);
@@ -65,6 +67,14 @@ const Cadastro = (props) => {
                     onChangeText={setSenha}
                     style={style.inputText}
                     secureTextEntry={true}
+                />
+                <Text style={style.text}>ID da Empresa Parceira</Text>
+                <TextInput
+                    placeholder="Digite o ID que sua Empresa passou"
+                    value={idParceiro}
+                    onChangeText={setIdParceiro}
+                    style={style.inputText}
+                    inputMode="numeric"
                 />
                 <Text style={style.subText}>By signing up you agree to our <Text style={style.subPrimary}>Terms &{"\n"}Condition</Text> and <Text style={style.subPrimary}>Privacy Policy.*</Text></Text>
             </View>

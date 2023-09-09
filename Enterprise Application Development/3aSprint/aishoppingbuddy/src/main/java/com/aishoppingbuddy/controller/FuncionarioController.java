@@ -3,7 +3,9 @@ package com.aishoppingbuddy.controller;
 import com.aishoppingbuddy.model.Credencial;
 import com.aishoppingbuddy.model.Funcionario;
 import com.aishoppingbuddy.model.Funcionario;
+import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.repository.FuncionarioRepository;
+import com.aishoppingbuddy.repository.ParceiroRepository;
 import com.aishoppingbuddy.service.TokenService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("aishoppingbuddy/api/funcionario")
@@ -26,6 +29,9 @@ public class FuncionarioController {
     
     @Autowired
     FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    ParceiroRepository parceiroRepository;
 
     @Autowired
     AuthenticationManager manager;
@@ -48,9 +54,13 @@ public class FuncionarioController {
     }
 
     @CrossOrigin
-    @PostMapping("cadastrar")
-    public ResponseEntity<Object> cadastro(@RequestBody @Valid Funcionario funcionario) {
+    @PostMapping("cadastrar/{idParceiro}")
+    public ResponseEntity<Object> cadastro(@PathVariable Long idParceiro, @RequestBody @Valid Funcionario funcionario) {
         log.info("cadastrando funcionario");
+        var parceiroResult = parceiroRepository.findById(idParceiro)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
+        log.info("achado parceiro "+parceiroResult.getId());
+        funcionario.setParceiro(parceiroResult);
         funcionario.setSenha(encoder.encode(funcionario.getSenha()));
         funcionarioRepository.save(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED).body(funcionario);
