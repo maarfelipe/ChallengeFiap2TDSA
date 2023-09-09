@@ -5,14 +5,14 @@ import ItemDetails from './ItemDetails';
 
 const Stack = createNativeStackNavigator();
 
-const Usuario = ({ navigation, route }) => {
+const Produto = ({ navigation, route }) => {
 
   return (
       <Stack.Navigator>
-        <Stack.Screen name="listUsuario" component={List} options={{headerShown: false}} navigation={navigation}/>
-        <Stack.Screen name="itemUsuario" component={ItemDetails} options={{headerShown: false}} navigation={navigation}/>
+        <Stack.Screen name="listProduto" component={List} options={{headerShown: false}} navigation={navigation}/>
+        <Stack.Screen name="itemProduto" component={ItemDetails} options={{headerShown: false}} navigation={navigation}/>
       </Stack.Navigator>
   );
 };
 
-export default Usuario;
+export default Produto;

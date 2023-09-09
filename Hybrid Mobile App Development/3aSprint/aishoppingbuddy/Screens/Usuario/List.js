@@ -54,7 +54,7 @@ const List = ({ navigation }) => {
             <Image style={style.bg3} source={require('../../Assets/bg3.png')} />
             <View style={style.filter}>
                 <TextInput
-                    placeholder="Buscar Recomendação"
+                    placeholder="Buscar Usuário"
                     value={busca}
                     onChangeText={setBusca}
                     style={style.inputText}

@@ -16,7 +16,7 @@ const List = ({ navigation }) => {
                 Authorization: `Bearer ${token}`
             },
             method: "GET",
-            url: `http://10.0.2.2:8080/aishoppingbuddy/api/usuario`
+            url: `http://10.0.2.2:8080/aishoppingbuddy/api/produto`
         }).then(response => {
             console.log(response.data);
             setLista(response.data.content);
@@ -35,7 +35,7 @@ const List = ({ navigation }) => {
                     Authorization: `Bearer ${token}`
                 },
                 method: "GET",
-                url: `http://10.0.2.2:8080/aishoppingbuddy/api/usuario/nome/${busca}`
+                url: `http://10.0.2.2:8080/aishoppingbuddy/api/produto/nome/${busca}`
             }).then(response => {
                 setLista(response.data.content);
             });

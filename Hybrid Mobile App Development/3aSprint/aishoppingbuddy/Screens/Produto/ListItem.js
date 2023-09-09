@@ -8,9 +8,9 @@ export default ListItem = (props) => {
 
     const id = item.id;
     const nome = item.nome;
-    const cpf = item.cpf;
+    const valor = item.valor;
 
-    const mensagem = `ID: ${id}\nCPF: ${cpf}`
+    const mensagem = `ID: ${id}\nR$ ${valor}`
 
     return (
         <View style={style.card}>
@@ -18,7 +18,7 @@ export default ListItem = (props) => {
             <View style={style.bar}></View>
             <Text style={style.mensagem}>{mensagem}</Text>
             <View style={style.buttonView}>
-                <TouchableOpacity style={style.button}  onPress={() => navigation.push('itemUsuario', {id: item.id, navigation:navigation, item:item })}>
+                <TouchableOpacity style={style.button}  onPress={() => navigation.push('itemProduto', {id: item.id, navigation:navigation, item:item })}>
                     <Text style={style.buttonLabel}>Saiba mais</Text>
                     <Image style={style.arrow} source={require('../../Assets/arrow.png')} />
                 </TouchableOpacity>

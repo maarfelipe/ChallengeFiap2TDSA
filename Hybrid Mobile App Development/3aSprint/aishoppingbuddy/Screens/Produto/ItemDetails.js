@@ -8,39 +8,77 @@ const ItemDetails = ({route}) => {
 
     const id = item.id;
     const nome = item.nome;
-    const cpf = item.cpf;
-    const cep = item.cep;
-    const genero = item.genero;
-    const data = item.dataNascimento;
-    const mensagem = `CPF: ${cpf}\nCEP: ${cep}\nGênero: ${genero}\n`;
+    const descricao = item.descricao;
+    const valor = item.valor;
+    const categoria = item.categoria;
+    const tipo = item.tipo;
 
     return (
         <View style={style.window}>
             <View style={styleProduto.card}>
                 <View style={styleProduto.imageFrame}>
                     <View style={[styleProduto.image, style.usuario]}>
-                        <Image style={styleProduto.imageIcon} source={require('../../Assets/icon4.png')} />
+                        <Image style={styleProduto.imageIcon} source={require('../../Assets/iconID.png')} />
                     </View>
                 </View>
                 <View style={styleProduto.text}>
-                    <Text style={style.title}>ID de {nome}</Text>
+                    <Text style={style.title}>ID do Produto</Text>
                     <Text style={style.text}>{id}</Text>
                 </View>
-            </View>
-            <View style={style.card}>
-                <Text style={style.text}>ID: {id}</Text>
-                <Text style={[style.title,style.titleSize]}>{nome}</Text>
-                <Text style={style.text}>{mensagem}</Text>
             </View>
             <View style={styleProduto.card}>
                 <View style={styleProduto.imageFrame}>
                     <View style={[styleProduto.image, style.data]}>
-                        <Image style={styleProduto.imageIcon} source={require('../../Assets/icon3.png')} />
+                        <Image style={styleProduto.imageIcon} source={require('../../Assets/Produto.png')} />
                     </View>
                 </View>
                 <View style={styleProduto.text}>
-                    <Text style={style.title}>Data da Nascimento</Text>
-                    <Text style={style.text}>{data[2]}/{data[1]}/{data[0]}</Text>
+                    <Text style={style.title}>Nome do Produto</Text>
+                    <Text style={style.text}>{nome}</Text>
+                </View>
+            </View>
+            <View style={styleProduto.card}>
+                <View style={styleProduto.imageFrame}>
+                    <View style={[styleProduto.image, style.usuario]}>
+                        <Image style={styleProduto.imageIcon} source={require('../../Assets/iconCategoria.png')} />
+                    </View>
+                </View>
+                <View style={styleProduto.text}>
+                    <Text style={style.title}>Categoria</Text>
+                    <Text style={style.text}>{categoria}</Text>
+                </View>
+            </View>
+            <View style={styleProduto.card}>
+                <View style={styleProduto.imageFrame}>
+                    <View style={[styleProduto.image, style.tipo]}>
+                        <Image style={styleProduto.imageIcon} source={require('../../Assets/iconTipo.png')} />
+                    </View>
+                </View>
+                <View style={styleProduto.text}>
+                    <Text style={style.title}>Tipo</Text>
+                    <Text style={style.text}>{tipo}</Text>
+                </View>
+            </View>
+            <View style={styleProduto.card}>
+                <View style={styleProduto.imageFrame}>
+                    <View style={[styleProduto.image, style.usuario]}>
+                        <Image style={styleProduto.imageIcon} source={require('../../Assets/iconID.png')} />
+                    </View>
+                </View>
+                <View style={styleProduto.text}>
+                    <Text style={style.title}>Descrição</Text>
+                    <Text style={style.text}>{descricao}</Text>
+                </View>
+            </View>
+            <View style={styleProduto.card}>
+                <View style={styleProduto.imageFrame}>
+                    <View style={[styleProduto.image, style.data]}>
+                        <Image style={styleProduto.imageIcon} source={require('../../Assets/iconPrice.png')} />
+                    </View>
+                </View>
+                <View style={styleProduto.text}>
+                    <Text style={style.title}>Preço</Text>
+                    <Text style={style.text}>R$ {valor}</Text>
                 </View>
             </View>
         </View>
@@ -75,6 +113,9 @@ const style = StyleSheet.create({
         backgroundColor:"#0AF",
         borderRadius:20
     },
+    tipo: {
+        backgroundColor:"#464344",
+    }
 });
 
 const styleProduto = StyleSheet.create({
