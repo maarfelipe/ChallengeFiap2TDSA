@@ -64,6 +64,7 @@ const List = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <FlatList
+                style={style.flatList}
                 data={lista}
                 renderItem={props => <ListItem navigation={navigation} {...props} />}
                 keyExtractor={item => item.id}
@@ -146,6 +147,9 @@ const style = StyleSheet.create({
         width:30,
         height:30,
     },
+    flatList:{
+        height:540,
+    }
 });
 
 export {List};

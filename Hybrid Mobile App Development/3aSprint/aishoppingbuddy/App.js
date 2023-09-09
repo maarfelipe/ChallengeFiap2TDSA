@@ -7,6 +7,7 @@ import { Image, View } from 'react-native';
 import Recomendacao from './Screens/Recomendacao';
 import Acesso from './Screens/Acesso';
 import Usuario from './Screens/Usuario';
+import CadastroUsuario from './Screens/Usuario/CadastroUsuario';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ const App = () => {
         <Stack.Screen name="home" component={Home} options={{ headerTitle: () =>  <Logo />, headerBackVisible: false}} />
         <Stack.Screen name="recomendacao" component={Recomendacao} options={{ headerTitle: 'Recomendações'}} />
         <Stack.Screen name="usuario" component={Usuario} options={{ headerTitle: 'Usuários'}} />
+        <Stack.Screen name="cadastroUsuario" component={CadastroUsuario} options={{headerTitle:"Cadastrar Usuário"}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

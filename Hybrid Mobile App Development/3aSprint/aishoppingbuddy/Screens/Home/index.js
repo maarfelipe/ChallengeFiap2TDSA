@@ -51,7 +51,7 @@ const Home = (props) => {
                     useAngle={true}
                     angle={243}
                     style={[style.button]}>
-                    <TouchableOpacity style={style.touch}>
+                    <TouchableOpacity style={style.touch} onPress={() => {navigation.push("cadastroUsuario", {id: Math.random()})}}>
                         <Image style={style.image} source={require('../../Assets/icon4.png')} />
                         <Text style={style.label}>{'Cadastrar\nUsuário'}</Text>
                     </TouchableOpacity>
