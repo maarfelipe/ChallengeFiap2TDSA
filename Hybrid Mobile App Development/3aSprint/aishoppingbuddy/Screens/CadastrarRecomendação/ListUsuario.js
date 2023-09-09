@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import ListItem from "./ListItem";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const List = ({ navigation }) => {
+const ListUsuario = ({ navigation }) => {
 
     const [lista, setLista] = useState([]);
     const [busca, setBusca] = useState("");
@@ -16,7 +15,7 @@ const List = ({ navigation }) => {
                 Authorization: `Bearer ${token}`
             },
             method: "GET",
-            url: `http://10.0.2.2:8080/aishoppingbuddy/api/produto`
+            url: `http://10.0.2.2:8080/aishoppingbuddy/api/usuario`
         }).then(response => {
             console.log(response.data);
             setLista(response.data.content);
@@ -35,7 +34,7 @@ const List = ({ navigation }) => {
                     Authorization: `Bearer ${token}`
                 },
                 method: "GET",
-                url: `http://10.0.2.2:8080/aishoppingbuddy/api/produto/nome/${busca}`
+                url: `http://10.0.2.2:8080/aishoppingbuddy/api/usuario/nome/${busca}`
             }).then(response => {
                 setLista(response.data.content);
             });
@@ -54,7 +53,7 @@ const List = ({ navigation }) => {
             <Image style={style.bg3} source={require('../../Assets/bg3.png')} />
             <View style={style.filter}>
                 <TextInput
-                    placeholder="Buscar Produto"
+                    placeholder="Buscar Usuário"
                     value={busca}
                     onChangeText={setBusca}
                     style={style.inputText}
@@ -152,4 +151,77 @@ const style = StyleSheet.create({
     }
 });
 
-export {List};
+
+const ListItem = (props) => {
+
+    const { navigation } = props;
+    const { item } = props;
+
+    const id = item.id;
+    const nome = item.nome;
+    const cpf = item.cpf;
+
+    const mensagem = `ID: ${id}\nCPF: ${cpf}`
+
+    return (
+        <View style={styleItem.card}>
+            <Text style={styleItem.titulo}>{nome}</Text>
+            <View style={styleItem.bar}></View>
+            <Text style={styleItem.mensagem}>{mensagem}</Text>
+            <View style={styleItem.buttonView}>
+                <TouchableOpacity style={styleItem.button}  onPress={() => navigation.push('recomendacaoListProduto', {id: item.id, navigation:navigation, usuario:item })}>
+                    <Text style={styleItem.buttonLabel}>Selecionar</Text>
+                    <Image style={styleItem.arrow} source={require('../../Assets/arrow.png')} />
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+}
+
+const styleItem = StyleSheet.create({
+    card: {
+        margin:8,
+        backgroundColor:'#FFF',
+        borderRadius:10,
+        padding:12,
+    },
+    titulo: {
+        color:'#000',
+        fontFamily:'Poppins',
+        fontSize:20,
+        fontWeight:'bold',
+    },
+    mensagem: {
+        color:'#888',
+        fontFamily:'Poppins',
+        fontSize:16,
+    },
+    bar: {
+        backgroundColor:'#DDD',
+        height:1,
+        width:'100%',
+        marginTop:6,
+        marginBottom:6,
+    },
+    buttonView: {
+        width:'100%',
+        flexDirection:'row',
+        justifyContent:'flex-end'
+    },
+    button: {
+        flexDirection:'row',
+        alignItems:'center',
+    },
+    buttonLabel:{
+        color:'#000',
+        fontFamily:'Poppins',
+        fontSize:16,
+        fontWeight:'bold',
+    },
+    arrow: {
+        width:20,
+        height:20,
+    }
+});
+
+export {ListUsuario};

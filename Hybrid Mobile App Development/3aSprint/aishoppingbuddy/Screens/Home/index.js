@@ -14,7 +14,7 @@ const Home = (props) => {
                     useAngle={true}
                     angle={135}
                     style={[style.button,style.buttonLarge]}>
-                    <TouchableOpacity style={style.touchLarge}>
+                    <TouchableOpacity style={style.touchLarge} onPress={() => navigation.push("cadastroRecomendacao", {id: Math.random()})}>
                         <View>
                             <Text style={style.title}>{'Gerar\nRecomendação'}</Text>
                         </View>
