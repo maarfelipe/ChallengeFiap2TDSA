@@ -8,6 +8,7 @@ import Recomendacao from './Screens/Recomendacao';
 import Acesso from './Screens/Acesso';
 import Usuario from './Screens/Usuario';
 import CadastroUsuario from './Screens/Usuario/CadastroUsuario';
+import CadastroProduto from './Screens/Produto/CadastroProduto';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ const App = () => {
         <Stack.Screen name="recomendacao" component={Recomendacao} options={{ headerTitle: 'Recomendações'}} />
         <Stack.Screen name="usuario" component={Usuario} options={{ headerTitle: 'Usuários'}} />
         <Stack.Screen name="cadastroUsuario" component={CadastroUsuario} options={{headerTitle:"Cadastrar Usuário"}}/>
+        <Stack.Screen name="cadastroProduto" component={CadastroProduto} options={{headerTitle:"Cadastrar Produto"}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

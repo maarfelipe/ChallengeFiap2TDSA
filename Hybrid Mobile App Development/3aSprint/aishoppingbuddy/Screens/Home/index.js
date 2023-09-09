@@ -29,7 +29,7 @@ const Home = (props) => {
                     useAngle={true}
                     angle={243}
                     style={[style.button]}>
-                    <TouchableOpacity style={style.touch} onPress={() => navigation.push('recomendacao', {id: Math.random()})}>
+                    <TouchableOpacity style={style.touch} onPress={() => navigation.push('cadastroProduto', {id: Math.random()})}>
                         <Image style={style.image} source={require('../../Assets/icon1.png')} />
                         <Text style={style.label}>{'Cadastrar\nProduto'}</Text>
                     </TouchableOpacity>
