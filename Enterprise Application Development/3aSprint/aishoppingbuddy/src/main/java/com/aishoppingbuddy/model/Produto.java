@@ -38,7 +38,6 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "cd_parceiros")
-    @JsonIgnore
     private Parceiro parceiro;
 
     @ManyToMany(mappedBy = "produtoList")
