@@ -72,42 +72,10 @@ const Home = (props) => {
                     colors={['#A34FFF','#8515FF']}
                     useAngle={true}
                     angle={243}
-                    style={[style.button]}>
+                    style={[style.button, style.buttonLarge]}>
                     <TouchableOpacity style={style.touch} onPress={() => navigation.push('recomendacao', {id: Math.random()})}>
                         <Image style={style.image} source={require('../../Assets/icon1.png')} />
                         <Text style={style.label}>{'Todas as\nRecomendações'}</Text>
-                    </TouchableOpacity>
-                </LinearGradient>
-                <LinearGradient
-                    colors={['#63D4F4','#2FC6F1']}
-                    useAngle={true}
-                    angle={243}
-                    style={[style.button]}>
-                    <TouchableOpacity style={style.touch}>
-                        <Image style={style.image} source={require('../../Assets/icon2.png')} />
-                        <Text style={style.label}>{'Buscar por\nID'}</Text>
-                    </TouchableOpacity>
-                </LinearGradient>
-            </View>
-            <View style={style.layer}>
-                <LinearGradient
-                    colors={['#5A5757','#231F20']}
-                    useAngle={true}
-                    angle={243}
-                    style={[style.button]}>
-                    <TouchableOpacity style={style.touch}>
-                        <Image style={style.image} source={require('../../Assets/icon3.png')} />
-                        <Text style={style.label}>{'Buscar por\ndata'}</Text>
-                    </TouchableOpacity>
-                </LinearGradient>
-                <LinearGradient
-                    colors={['#6369F4','#2F37F1']}
-                    useAngle={true}
-                    angle={243}
-                    style={[style.button]}>
-                    <TouchableOpacity style={style.touch}>
-                        <Image style={style.image} source={require('../../Assets/icon4.png')} />
-                        <Text style={style.label}>{'Buscar por\nusuário'}</Text>
                     </TouchableOpacity>
                 </LinearGradient>
             </View>
