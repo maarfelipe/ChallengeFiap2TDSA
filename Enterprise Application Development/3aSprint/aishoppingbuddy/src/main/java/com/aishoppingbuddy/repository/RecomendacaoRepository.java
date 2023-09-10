@@ -4,7 +4,6 @@ import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.model.Recomendacao;
 import com.aishoppingbuddy.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
