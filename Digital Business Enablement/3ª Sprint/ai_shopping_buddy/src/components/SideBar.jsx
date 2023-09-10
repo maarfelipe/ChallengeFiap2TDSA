@@ -31,7 +31,7 @@ export default function SideBar({ active }) {
                 </li>
                 <li>
                     <Link className={active === "buscar_usuario" ? "" : "hover-link"} href="/buscar_usuario">
-                        Buscar Usuário
+                        Buscar Usuários
                     </Link>
                 </li>
                 <li>
