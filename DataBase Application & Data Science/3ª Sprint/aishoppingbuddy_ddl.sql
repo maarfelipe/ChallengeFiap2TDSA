@@ -73,7 +73,7 @@ CREATE TABLE t_aisb_funcionario (
     cd_funcionario NUMBER(4) primary key,
     nm_funcionario VARCHAR2(50) NOT NULL,
     ds_email       VARCHAR2(50) NOT NULL,
-    ds_senha       VARCHAR2(25),
+    ds_senha       VARCHAR2(25) NOT NULL,
     parceiro_fk references t_aisb_parceiro_negocio
 );
 
@@ -229,7 +229,7 @@ CREATE TABLE t_atualizacao_senha (
 );
 
 
-
+SELECT * FROM T_AISB_PARCEIRO_NEGOCIO;
 
 
 
