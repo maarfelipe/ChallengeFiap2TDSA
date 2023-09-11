@@ -5,7 +5,7 @@ async function getUsuarios() {
     const url = "http://localhost:8080/aishoppingbuddy/api/usuario"
     const resp = await fetch(
         url,
-        { headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbDFAZ21haWwuY29tIiwiaXNzIjoiQUlTaG9wcGluZ0J1ZGR5IiwiZXhwIjoxNjk0MzkzNDU1fQ.k1fZOy305rNnhbo5F3NHVx1fXFaVplnHYtjHW4tfPNY' } }
+        { headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbDFAZ21haWwuY29tIiwiaXNzIjoiQUlTaG9wcGluZ0J1ZGR5IiwiZXhwIjoxNjk0NDcwMDE4fQ.B1jVW5bxqaMwgV1lPlmmO5tNgAAw8-ZslULXTp5Jkvk' } }
     )
     return resp.json()
 }
