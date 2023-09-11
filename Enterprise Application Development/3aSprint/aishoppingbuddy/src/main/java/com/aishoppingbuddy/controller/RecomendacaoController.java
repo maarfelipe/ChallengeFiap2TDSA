@@ -1,6 +1,5 @@
 package com.aishoppingbuddy.controller;
 
-import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.model.Produto;
 import com.aishoppingbuddy.model.Recomendacao;
 import com.aishoppingbuddy.repository.ProdutoRepository;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -60,7 +58,7 @@ public class RecomendacaoController {
         log.info("buscando funcionario");
         var funcionario = tokenService.validate(tokenService.getToken(header));
         var parceiro = funcionario.getParceiro();
-        var listRecomendacao = recomendacaoRepository.findByParceiroAndTituloLikeIgnoreCase(parceiro,busca);
+        var listRecomendacao = recomendacaoRepository.findByParceiroAndTituloContainsIgnoreCase(parceiro,busca);
         int start = (int) pageable.getOffset();
         int end = (int) (Math.min((start + pageable.getPageSize()), listRecomendacao.size()));
         return new PageImpl<Recomendacao>(listRecomendacao.subList(start, end), pageable, listRecomendacao.size());
@@ -105,7 +103,7 @@ public class RecomendacaoController {
             log.info("salvando produto "+produtoSalvo.getId()+" na recomendacao "+recomendacao.getId());
         }
 
-        return ResponseEntity.ok(recomendacao);
+        return ResponseEntity.ok(recomendacaoRepository.findById(recomendacao.getId()));
 
     }
 

@@ -1,7 +1,6 @@
 package com.aishoppingbuddy.controller;
 
 import com.aishoppingbuddy.model.Produto;
-import com.aishoppingbuddy.model.Usuario;
 import com.aishoppingbuddy.repository.FuncionarioRepository;
 import com.aishoppingbuddy.repository.ParceiroRepository;
 import com.aishoppingbuddy.repository.ProdutoRepository;
@@ -18,8 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("aishoppingbuddy/api/produto")
@@ -55,7 +52,7 @@ public class ProdutoController {
         log.info("buscando funcionario");
         var funcionarioResult = tokenService.validate(tokenService.getToken(header));
         var parceiroResult = funcionarioResult.getParceiro();
-        var listProduto = produtoRepository.findByParceiroAndNomeLikeIgnoreCase(parceiroResult, busca);
+        var listProduto = produtoRepository.findByParceiroAndNomeContainsIgnoreCase(parceiroResult, busca);
         int start = (int) pageable.getOffset();
         int end = (int) (Math.min((start + pageable.getPageSize()), listProduto.size()));
         return new PageImpl<Produto>(listProduto.subList(start, end), pageable, listProduto.size());
@@ -95,6 +92,9 @@ public class ProdutoController {
         var result = produtoRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não Encontrado"));
         produto.setId(id);
+        produto.setParceiro(result.getParceiro());
+        produto.setRecomendacaoList(result.getRecomendacaoList());
+        produto.setTransacao(result.getTransacao());
         produtoRepository.save(produto);
         return ResponseEntity.ok(produto);
     }

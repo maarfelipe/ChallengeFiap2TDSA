@@ -11,6 +11,6 @@ import java.util.List;
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     List<Produto> findByParceiro(Parceiro parceiro);
 
-    List<Produto> findByParceiroAndNomeLikeIgnoreCase(Parceiro parceiro, String nome);
+    List<Produto> findByParceiroAndNomeContainsIgnoreCase(Parceiro parceiro, String nome);
 
 }

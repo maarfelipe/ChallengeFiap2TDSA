@@ -1,6 +1,5 @@
 package com.aishoppingbuddy.controller;
 
-import com.aishoppingbuddy.model.Recomendacao;
 import com.aishoppingbuddy.model.Usuario;
 import com.aishoppingbuddy.repository.UsuarioRepository;
 import com.aishoppingbuddy.service.TokenService;
@@ -16,8 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("aishoppingbuddy/api/usuario")
@@ -70,13 +67,15 @@ public class UsuarioController {
         var result = usuarioRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não Encontrado"));
         usuario.setId(id);
+        usuario.setRecomendacaoList(result.getRecomendacaoList());
+        usuario.setTransacaoList(result.getTransacaoList());
         usuarioRepository.save(usuario);
         return ResponseEntity.ok(usuario);
     }
 
     @GetMapping("nome/{busca}")
     public Page<Usuario> listar(@PageableDefault(size = 5) Pageable pageable, @PathVariable String busca) {
-        var listUsuario = usuarioRepository.findByNome(busca);
+        var listUsuario = usuarioRepository.findByNomeContainsIgnoreCase(busca);
         int start = (int) pageable.getOffset();
         int end = (int) (Math.min((start + pageable.getPageSize()), listUsuario.size()));
         return new PageImpl<Usuario>(listUsuario.subList(start, end), pageable, listUsuario.size());

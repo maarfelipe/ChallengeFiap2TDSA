@@ -74,6 +74,10 @@ public class ParceiroController {
         var result = parceiroRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Parceiro não Encontrado"));
         parceiro.setId(id);
+        parceiro.setTransacaoList(result.getTransacaoList());
+        parceiro.setFuncionarioList(result.getFuncionarioList());
+        parceiro.setProdutoList(result.getProdutoList());
+        parceiro.setRecomendacaoList(result.getRecomendacaoList());
         parceiroRepository.save(parceiro);
         return ResponseEntity.ok(parceiro);
     }

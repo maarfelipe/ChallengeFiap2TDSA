@@ -2,8 +2,6 @@ package com.aishoppingbuddy.controller;
 
 import com.aishoppingbuddy.model.Credencial;
 import com.aishoppingbuddy.model.Funcionario;
-import com.aishoppingbuddy.model.Funcionario;
-import com.aishoppingbuddy.model.Parceiro;
 import com.aishoppingbuddy.repository.FuncionarioRepository;
 import com.aishoppingbuddy.repository.ParceiroRepository;
 import com.aishoppingbuddy.service.TokenService;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("aishoppingbuddy/api/funcionario")
@@ -89,7 +86,9 @@ public class FuncionarioController {
         log.info("atualizando funcionario "+id);
         var result = funcionarioRepository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Funcionario não Encontrado"));
+        funcionario.setSenha(encoder.encode(funcionario.getPassword()));
         funcionario.setId(id);
+        funcionario.setParceiro(result.getParceiro());
         funcionarioRepository.save(funcionario);
         return ResponseEntity.ok(funcionario);
     }
