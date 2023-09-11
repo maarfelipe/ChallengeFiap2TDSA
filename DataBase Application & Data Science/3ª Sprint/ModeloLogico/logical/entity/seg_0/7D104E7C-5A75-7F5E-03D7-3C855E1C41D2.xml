@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7D104E7C-5A75-7F5E-03D7-3C855E1C41D2" name="T_AISB_FUNCIONARIO">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-04-27 11:18:51 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cd_funcionario" id="880F8902-9107-740B-9547-F79967B96C37">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-04-27 11:19:08 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cd_parceiro" id="3C7E6F0D-5A49-0166-3003-E0554026868C">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-04-27 11:20:00 UTC</createdTime>
+<generatorID>4818BA3C-550E-0A3B-7223-2B5D484AE734</generatorID>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<referedAttribute>2140632E-FF59-DD9E-A541-BD5948EA5A92</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nm_funcionario" id="3DA0F088-DA68-F3F0-3215-7CD79227E2A0">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-04-27 11:19:14 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ds_email" id="D6992ADD-BC15-7F2E-D87C-D9CBCB4FB4A4">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-04-27 11:19:21 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ds_senha" id="4391151C-4877-EB71-452F-FB2DD9BF71B4">
+<createdBy>luizz</createdBy>
+<createdTime>2023-09-11 16:51:23 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8C256C59-C1F6-C874-1165-043DA9324EA0" name="PK_AISB_FUNCIONARIO ">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-04-27 11:19:32 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<newElementsIDs>880F8902-9107-740B-9547-F79967B96C37</newElementsIDs>
+<usedAttributes>
+<attributeRef>880F8902-9107-740B-9547-F79967B96C37</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
