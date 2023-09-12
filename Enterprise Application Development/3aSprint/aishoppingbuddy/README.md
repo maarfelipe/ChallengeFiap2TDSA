@@ -38,7 +38,7 @@
 
 ### Cadastro de Funcionário
 
-`POST` /aishoppingbuddy/api/funcionario/cadastro/{idParceiro}
+`POST` /aishoppingbuddy/api/funcionario/cadastrar/{idParceiro}
 
 *Campos de requisição*
 
