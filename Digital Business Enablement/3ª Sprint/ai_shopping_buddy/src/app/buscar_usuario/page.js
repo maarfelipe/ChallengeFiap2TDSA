@@ -1,11 +1,13 @@
 import SideBar from "@/components/SideBar";
 import DataRow from "./DataRow";
+import { getToken } from "@/actions/get_token";
 
 async function getUsuarios() {
     const url = "http://localhost:8080/aishoppingbuddy/api/usuario"
+    const token = getToken();
     const resp = await fetch(
         url,
-        { headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbDFAZ21haWwuY29tIiwiaXNzIjoiQUlTaG9wcGluZ0J1ZGR5IiwiZXhwIjoxNjk0NDcwMDE4fQ.B1jVW5bxqaMwgV1lPlmmO5tNgAAw8-ZslULXTp5Jkvk' } }
+        { headers: { Authorization: `Bearer ${token}` } }
     )
     return resp.json()
 }

@@ -1,0 +1,3 @@
+export function getToken() {
+    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsdWNhc0BnbWFpbC5jb20iLCJpc3MiOiJBSVNob3BwaW5nQnVkZHkiLCJleHAiOjE2OTQ1NDE1ODR9.7C8Jlj9ITho6Aa8aqn1oyvduZ_SQcy0mhs5gxQO8jrg"
+}
