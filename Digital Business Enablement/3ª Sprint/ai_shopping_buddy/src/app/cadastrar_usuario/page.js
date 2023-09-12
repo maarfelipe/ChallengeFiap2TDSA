@@ -22,7 +22,7 @@ export default function CadastrarUsuario() {
 			genero:genero,
 			dataNascimento:dataNascimento.split('-').map(parseFloat)
 		}
-		const resp = await create(formData); // Certifique-se de que a função create existe e faz o que é esperado
+		const resp = await create(formData);
 		if (resp.message === "ok") {
 			router.push("/buscar_usuario");
 			return;
@@ -47,7 +47,7 @@ export default function CadastrarUsuario() {
 						<option value="NB">Não Binário</option>
 					</select>
 					<input type="date" name="dataNascimento" label="dataNascimento" id="dataNascimento" value={dataNascimento} onChange={(e) => {setDataNascimento(e.target.value)}}/>
-					<button onClick={onCreate}>fhuisahuogfshu</button>
+					<button onClick={onCreate}>Submit</button>
 					<p className="text-red-500">{erro}</p>
 				</div>
 			</main>
