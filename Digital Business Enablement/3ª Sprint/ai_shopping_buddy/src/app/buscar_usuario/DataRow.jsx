@@ -7,7 +7,7 @@ export default function DataRow({ usuario }) {
             <td className="px-6">{usuario.nome}</td>
             <td className="px-6">{usuario.cpf}</td>
             <td className="px-6">{usuario.cep}</td>
-            <td className="px-6">{usuario.dataNascimento}</td>
+            <td className="px-6">{usuario.dataNascimento[2]}/{usuario.dataNascimento[1]}/{usuario.dataNascimento[0]}</td>
             <td className="px-6">{usuario.genero}</td>
             <DropMenu />
         </tr>

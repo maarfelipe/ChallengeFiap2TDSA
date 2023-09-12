@@ -2,15 +2,16 @@
 import SideBar from "@/components/SideBar";
 import { useState } from "react";
 import { create } from "@/actions/cadastrar_usuario";
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 export default function CadastrarUsuario() {
 	const [erro, setErro] = useState("");
+	const router = useRouter();
 
 	const [nome,setNome] = useState("");
 	const [cpf,setCpf] = useState("");
 	const [cep,setCep] = useState("");
-	const [genero,setGenero] = useState("");
+	const [genero,setGenero] = useState("M");
 	const [dataNascimento, setDataNascimento] = useState("");
 
 	async function onCreate() {
@@ -23,7 +24,7 @@ export default function CadastrarUsuario() {
 		}
 		const resp = await create(formData); // Certifique-se de que a função create existe e faz o que é esperado
 		if (resp.message === "ok") {
-			redirect("/buscar_usuario")
+			router.push("/buscar_usuario");
 			return;
 		}
 		setErro(resp.message);

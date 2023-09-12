@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache";
 import { getToken } from "./get_token";
 
 export async function create(formData){
@@ -19,6 +20,7 @@ export async function create(formData){
     if (resp.status !== 201){
         return {message: "Erro ao cadastrar"}
     }
+    revalidatePath("/buscar_usuario")
     return {message: "ok"}
 
 }
