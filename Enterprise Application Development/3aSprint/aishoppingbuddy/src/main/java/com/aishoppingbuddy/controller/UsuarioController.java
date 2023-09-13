@@ -30,7 +30,7 @@ public class UsuarioController {
 
     @CrossOrigin
     @GetMapping
-    public Page<Usuario> listar(@PageableDefault(size = 5) Pageable pageable) {
+    public Page<Usuario> listar(@PageableDefault(size = 10) Pageable pageable) {
         var listUsuario = usuarioRepository.findAll();
         int start = (int) pageable.getOffset();
         int end = (int) (Math.min((start + pageable.getPageSize()), listUsuario.size()));
@@ -74,7 +74,7 @@ public class UsuarioController {
     }
 
     @GetMapping("nome/{busca}")
-    public Page<Usuario> listar(@PageableDefault(size = 5) Pageable pageable, @PathVariable String busca) {
+    public Page<Usuario> listar(@PageableDefault(size = 10) Pageable pageable, @PathVariable String busca) {
         var listUsuario = usuarioRepository.findByNomeContainsIgnoreCase(busca);
         int start = (int) pageable.getOffset();
         int end = (int) (Math.min((start + pageable.getPageSize()), listUsuario.size()));

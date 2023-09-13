@@ -37,7 +37,7 @@ public class ProdutoController {
     TokenService tokenService;
     
     @GetMapping
-    public Page<Produto> load(@RequestHeader("Authorization") String header, @PageableDefault(size = 5) Pageable pageable) {
+    public Page<Produto> load(@RequestHeader("Authorization") String header, @PageableDefault(size = 10) Pageable pageable) {
         log.info("buscando funcionario");
         var funcionarioResult = tokenService.validate(tokenService.getToken(header));
         var parceiroResult = funcionarioResult.getParceiro();
@@ -48,7 +48,7 @@ public class ProdutoController {
     }
     
     @GetMapping("nome/{busca}")
-    public Page<Produto> listar(@RequestHeader("Authorization") String header, @PageableDefault(size = 5) Pageable pageable, @PathVariable String busca) {
+    public Page<Produto> listar(@RequestHeader("Authorization") String header, @PageableDefault(size = 10) Pageable pageable, @PathVariable String busca) {
         log.info("buscando funcionario");
         var funcionarioResult = tokenService.validate(tokenService.getToken(header));
         var parceiroResult = funcionarioResult.getParceiro();

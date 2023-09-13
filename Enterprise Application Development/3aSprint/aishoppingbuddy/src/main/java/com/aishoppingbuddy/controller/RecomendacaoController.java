@@ -109,7 +109,7 @@ public class RecomendacaoController {
 
     @CrossOrigin
     @GetMapping("usuario/{idUsuario}")
-    public Page<Recomendacao> listarUsuario(@RequestHeader("Authorization") String header, @PathVariable long idUsuario, @PageableDefault(size = 5) Pageable pageable) {
+    public Page<Recomendacao> listarUsuario(@RequestHeader("Authorization") String header, @PathVariable long idUsuario, @PageableDefault(size = 10) Pageable pageable) {
         log.info("buscando funcionario");
         var funcionario = tokenService.validate(tokenService.getToken(header));
         var parceiro = funcionario.getParceiro();
