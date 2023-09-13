@@ -1,3 +1,3 @@
 export function getToken() {
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsdWNhc0BnbWFpbC5jb20iLCJpc3MiOiJBSVNob3BwaW5nQnVkZHkiLCJleHAiOjE2OTQ1NzcwNTV9.ZbEIR82pE0C4xqTT14Ke27afeoRd0zP2Jn64Kj-A_OU"
+    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoZW5yeUBnbWFpbC5jb20iLCJpc3MiOiJBSVNob3BwaW5nQnVkZHkiLCJleHAiOjE2OTQ1ODIwNjF9.sQRSa0gd3CihsY1fgCMrVXASO6ZPCZGcgU8irics6tg"
 }
