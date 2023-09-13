@@ -2,7 +2,7 @@
 [GitHub](https://github.com/maarfelipe/ChallengeFiap2TDSA)
 
 ## Link Vídeo
-[GitHub](https://youtu.be/vXZ5KNSqmLw)
+[Youtube](https://youtu.be/vXZ5KNSqmLw)
 
 ## Endpoints
 - Funcionário
