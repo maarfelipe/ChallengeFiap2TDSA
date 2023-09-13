@@ -1,8 +1,8 @@
-## Diagrama de Classes
-![DIAGRAMA](diagrama_uml.png)
-
 ## Link Repositório
 [GitHub](https://github.com/maarfelipe/ChallengeFiap2TDSA)
+
+## Link Vídeo
+[GitHub](https://youtu.be/vXZ5KNSqmLw)
 
 ## Endpoints
 - Funcionário
