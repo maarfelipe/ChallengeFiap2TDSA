@@ -1,7 +1,23 @@
+"use client"
+
+import { AuthContext } from "@/contexts/AuthContext";
 import Link from "next/link";
 import { CreditCardIcon } from "@heroicons/react/24/outline";
+import { useContext } from "react";
+import Button from "./Button";
+import { useRouter } from "next/navigation";
 
 export default function SideBar({ active }) {
+    const { user, logout } = useContext(AuthContext)
+    const { push } = useRouter()
+
+    function handleLogout() {
+        console.log("logout")
+        logout()
+        push("/login")
+    }
+    console.log(user)
+
     return (
         <nav className="flex flex-col bg-white w-64 p-6 h-full fixed">
             <div className="flex items-center justify-center mb-12">
@@ -67,13 +83,14 @@ export default function SideBar({ active }) {
                 </li>
             </ul>
 
-            <div>
-                <Link href="/">
-                    <span className="text-red-500">
-                        Log Out
-                    </span>
-                </Link>
+            <div className="flex gap-2 items-center">
+                <span>{user?.email}</span>
+                <div className="h-12 w-12 rounded-full overflow-hidden">
+                    <img src="https://i.pravatar.cc/100" alt="avatar do usuário" />
+                </div>
+                <Button onClick={handleLogout} type="button">Logout</Button>
             </div>
+
         </nav>
     );
 }
