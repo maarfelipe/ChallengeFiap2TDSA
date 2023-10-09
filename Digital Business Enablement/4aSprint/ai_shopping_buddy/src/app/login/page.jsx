@@ -19,6 +19,7 @@ export default function LoginPage() {
     const { login } = useContext(AuthContext)
 
     async function onSubmit(data) {
+
         const resp = await login(data)
 
         console.log(resp)
@@ -29,36 +30,35 @@ export default function LoginPage() {
         }
 
         push("/")
-
     }
 
     return (
-        <div className="flex h-screen">
-            <aside className="">
-                <Image src={loginimage} alt="" className="h-full w-full object-cover" />
-            </aside>
+            <div className="flex h-screen">
+                <aside className="">
+                    <Image src={loginimage} alt="" className="h-full w-full object-cover" />
+                </aside>
 
-            <main className="flex flex-col items-center justify-center w-full">
-                <img src="/logo.png" alt="Logo" className="flex items-center justify-center mb-6 w-80" />
+                <main className="flex flex-col items-center justify-center w-full">
+                    <img src="/logo.png" alt="Logo" className="flex items-center justify-center mb-6 w-80" />
 
-                <form onSubmit={handleSubmit(onSubmit)} >
-                    <InputTextLogin
-                        register={register}
-                        name="email"
-                        label="Email"
-                        placeholder="Digite o seu email"
-                    />
-                    <InputTextLogin
-                        register={register}
-                        name="senha"
-                        label="Senha"
-                        type="password"
-                        placeholder="************"
-                    />
-                    <Button type="button" variant="third">Login</Button>
-                </form>
+                    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center justify-center">
+                        <InputTextLogin
+                            register={register}
+                            name="email"
+                            label="Email"
+                            placeholder="Digite o seu email"
+                        />
+                        <InputTextLogin
+                            register={register}
+                            name="senha"
+                            label="Senha"
+                            type="password"
+                            placeholder="************"
+                        />
+                        <Button type="button" variant="third">Login</Button>
+                    </form>
 
-            </main>
-        </div>
+                </main>
+            </div>
     )
 }

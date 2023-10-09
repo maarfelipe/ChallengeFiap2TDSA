@@ -83,11 +83,11 @@ export default function SideBar({ active }) {
                 </li>
             </ul>
 
-            <div className="flex gap-2 items-center">
-                <span>{user?.email}</span>
+            <div className="flex flex-col gap-2 items-center">
                 <div className="h-12 w-12 rounded-full overflow-hidden">
                     <img src="https://i.pravatar.cc/100" alt="avatar do usuário" />
                 </div>
+                <span>{user?.email}</span>
                 <Button onClick={handleLogout} type="button">Logout</Button>
             </div>
 

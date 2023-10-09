@@ -1,11 +1,11 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { getToken } from "./get_token";
+import { cookies } from "next/headers";
 
 export async function create(formData){
     const url = "http://localhost:8080/aishoppingbuddy/api/produto";
-    const token = getToken();
+    const token = cookies().get("aishoppingbuddy_token")
     console.log(token);
     console.log(JSON.stringify(formData));
     const options = {
@@ -13,13 +13,17 @@ export async function create(formData){
         body: JSON.stringify(formData),
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token.value}`
         }
     }
-    const resp = await fetch(url, options);
-    if (resp.status !== 201){
-        return {message: "Erro ao cadastrar"}
+    try {
+        console.log({options})
+        const resp = await fetch(url, options);
+        console.log({resp});
+        revalidatePath("/listar_produtos")
+        return { message: "ok" }
+    } catch (error) {
+        console.log({error})
+        return { message: "Erro ao cadastrar" }
     }
-    revalidatePath("/listar_produtos")
-    return {message: "ok"}
 }

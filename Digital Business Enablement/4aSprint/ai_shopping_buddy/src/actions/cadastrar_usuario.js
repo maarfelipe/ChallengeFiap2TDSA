@@ -1,26 +1,33 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { getToken } from "./get_token";
+import { cookies } from 'next/headers'
 
-export async function create(formData){
+export async function create(formData) {
+    //console.log(token);
+    //console.log({formData});
     const url = "http://localhost:8080/aishoppingbuddy/api/usuario";
-    const token = getToken();
+    const token = cookies().get("aishoppingbuddy_token")
     console.log(token);
-    console.log(JSON.stringify(formData));
+    //console.log(JSON.stringify(formData));  
+    console.log({ formData });
     const options = {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: formData ? JSON.stringify(formData) : null,
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token.value}`
         }
     }
-    const resp = await fetch(url, options);
-    if (resp.status !== 201){
-        return {message: "Erro ao cadastrar"}
+    try {
+        console.log({options})
+        const resp = await fetch(url, options);
+        console.log({resp})
+        revalidatePath("/buscar_usuario")
+        return { message: "ok" }
+    } catch (error) {
+        console.log({error})
+        return { message: "Erro ao cadastrar" }
     }
-    revalidatePath("/buscar_usuario")
-    return {message: "ok"}
 
 }

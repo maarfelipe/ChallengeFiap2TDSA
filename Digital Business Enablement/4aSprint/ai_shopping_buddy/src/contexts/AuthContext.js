@@ -9,8 +9,9 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null)
 
     async function login(credenciais) {
+        console.log(JSON.stringify(credenciais));
         const resp = await serverLogin(credenciais)
-
+        
         if (resp?.error) return resp
 
         setUser({ email: credenciais.email })

@@ -1,13 +1,15 @@
-import { getToken } from "@/actions/get_token";
 import SideBar from "@/components/SideBar";
 import DataRow from "./DataRow";
+import React from "react";
+import { cookies } from "next/headers";
+
 
 async function getProdutos() {
 	const url = "http://localhost:8080/aishoppingbuddy/api/produto"
-	const token = getToken();
+	const token = cookies().get("aishoppingbuddy_token");
 	const resp = await fetch(
 		url,
-		{ headers: { Authorization: `Bearer ${token}` } }
+		{ headers: { Authorization: `Bearer ${token.value}` } }
 	)
 	return resp.json()
 }
@@ -15,6 +17,13 @@ async function getProdutos() {
 export default async function ListarProdutos() {
 	const data = await getProdutos();
 
+	if(data.length === 0){
+		return (
+			<>
+			<h1>Buscando Produtos</h1>
+			</>
+			)
+		}
 	return (
 		<div className="flex">
 			<div className="w-64 mr-4">

@@ -1,29 +1,34 @@
 "use server"
 import { cookies } from 'next/headers'
 
-const url = process.env.NEXT_PUBLIC_BASE_URL +  "/usuarios/login"
+const url = process.env.NEXT_PUBLIC_BASE_URL + "/funcionario/login"
 
 
-export async function serverLogin(credenciais){
+export async function serverLogin(credenciais) {
     const options = {
         method: "POST",
         body: JSON.stringify(credenciais),
-        headers:{
+        headers: {
             "Content-Type": "application/json"
         }
     }
 
-    const resp = await fetch(url, options)
+    try {
+        const resp = await fetch(url, options)
 
-    if (resp.status !== 200) return {error: "credenciais inválidas"}
+        if (resp.status !== 200) return { error: "credenciais inválidas" }
 
-    const json = await resp.json()
+        const json = await resp.json()
 
-    cookies().set("aishoppingbuddy_token", json.token, {
-        maxAge: 60 * 60 * 24 * 7 // 7 dias
-    })
+        cookies().set("aishoppingbuddy_token", json.token, {
+            maxAge: 60 * 60 * 24 * 7 // 7 dias
+        })
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
-export async function serverLogout(){
+export async function serverLogout() {
     cookies().delete("aishoppingbuddy_token")
 }

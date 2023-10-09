@@ -5,7 +5,7 @@ export default function Button({ children, icon, variant = "primary", estilo = "
         primary: "bg-brown_800 text-black",
         secundary: "border-2 border-black text-black hover:text-white"
     }
-    const variantClass = `flex items-center justify-center font-overlock hover:bg-pink-800 gap-2 px-10 py-1 mt-7 mb-4 rounded-3xl  ${styles[variant]}`
+    const variantClass = `flex items-center justify-center font-overlock hover:bg-pink-800 gap-2 px-10 py-1 mt-3 mb-4 rounded-3xl  ${styles[variant]}`
 
     return (
         <>
