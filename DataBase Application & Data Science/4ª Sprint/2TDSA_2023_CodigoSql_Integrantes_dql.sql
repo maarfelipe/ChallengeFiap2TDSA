@@ -312,7 +312,7 @@ select * from  t_atualizacao_senha;
 select * from t_aisb_funcionario; 
 
 ----------------------------------------------------------------------------------------
-------------------------TESTE--------------------
+------------------------TESTE COM UPDATE--------------------
 CREATE OR REPLACE TRIGGER trg_rastreamento_alteracoes
 BEFORE UPDATE ON t_aisb_funcionario
 FOR EACH ROW
@@ -321,6 +321,15 @@ BEGIN
         INSERT INTO t_atualizacao_senha (cd_funcionario, operacao, senha_anterior, senha_nova, data_atualizacao, usuario_execucao)
         VALUES (:OLD.cd_funcionario, 'UPDATE', :OLD.ds_senha, :NEW.ds_senha, SYSTIMESTAMP, USER);
     END IF;
+END;
+
+-----------------------TESTE COM INSERT---------------------
+CREATE OR REPLACE TRIGGER trg_rastreamento_insercao
+AFTER INSERT ON t_aisb_funcionario
+FOR EACH ROW
+BEGIN
+    INSERT INTO t_atualizacao_senha_audit (cd_funcionario, operacao, senha_nova, data_atualizacao, usuario_execucao)
+    VALUES (:NEW.cd_funcionario, 'INSERT', :NEW.ds_senha, SYSTIMESTAMP, USER);
 END;
 
 
