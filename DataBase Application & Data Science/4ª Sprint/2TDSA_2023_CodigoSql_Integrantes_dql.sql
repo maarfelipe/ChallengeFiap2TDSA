@@ -2,11 +2,11 @@ set serveroutput on
 set verify off
 
 ----------------------------------------------------------------
---FunÁ„o Package que faz a verificaÁ„o ao cadastrar um funcionario, em que, caso esse
--- funcionario ja exista no sistema armazenar as informaÁıes na tabela de erro,
--- e caso ele n„o exista, far· o cadastro do novo funcionario com as novas informaÁıes
--- essa funÁ„o tambÈm ir· verificar se o codigo do parceiro existe para que esse 
--- funcion·rio seja cadastrado com um parceiro existente
+--Fun√ß√£o Package que faz a verifica√ß√£o ao cadastrar um funcionario, em que, caso esse
+-- funcionario ja exista no sistema armazenar as informa√ß√µes na tabela de erro,
+-- e caso ele n√£o exista, far√° o cadastro do novo funcionario com as novas informa√ß√µes
+-- essa fun√ß√£o tamb√©m ir√° verificar se o codigo do parceiro existe para que esse 
+-- funcion√°rio seja cadastrado com um parceiro existente
 
 CREATE OR REPLACE PACKAGE PackageCadastroFunc IS
     FUNCTION cadastrar_funcionario(
@@ -42,15 +42,15 @@ CREATE OR REPLACE PACKAGE BODY PackageCadastroFunc IS
             END IF;
 
             INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
-            VALUES (v_cd_erro, 'Parceiro de negÛcios n„o encontrado', SYSDATE, USER);
+            VALUES (v_cd_erro, 'Parceiro de neg√≥cios n√£o encontrado', SYSDATE, USER);
 
-            RETURN 'N„o foi possÌvel cadastrar esse funcion·rio pois o parceiro de negÛcios n„o foi encontrado.';
+            RETURN 'N√£o foi poss√≠vel cadastrar esse funcion√°rio pois o parceiro de neg√≥cios n√£o foi encontrado.';
         END IF;
 
         INSERT INTO t_aisb_funcionario (cd_funcionario, nm_funcionario, ds_email, ds_senha, parceiro_fk)
         VALUES (p_cd_funcionario, p_nm_funcionario, p_ds_email, p_ds_senha, p_cd_parceiro);
 
-        RETURN 'O funcion·rio foi cadastrado com sucesso.';
+        RETURN 'O funcion√°rio foi cadastrado com sucesso.';
     EXCEPTION
         WHEN OTHERS THEN
             SELECT MAX(cd_erro) + 1 INTO v_cd_erro FROM t_aisb_erro;
@@ -59,9 +59,9 @@ CREATE OR REPLACE PACKAGE BODY PackageCadastroFunc IS
             END IF;
 
             INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
-            VALUES (v_cd_erro, 'Erro ao cadastrar funcion·rio', SYSDATE, USER);
+            VALUES (v_cd_erro, 'Erro ao cadastrar funcion√°rio', SYSDATE, USER);
 
-            RETURN 'Ocorreu um erro ao cadastrar o funcion·rio.';
+            RETURN 'Ocorreu um erro ao cadastrar o funcion√°rio.';
     END cadastrar_funcionario;
 END PackageCadastroFunc;
 
@@ -92,9 +92,9 @@ select * from t_aisb_funcionario;
 
 
 ---------------------------------------------------------------------------
---FunÁ„o que faz a verificaÁ„o ao cadastrar um usu·rio, em que, caso esse
--- usu·rio ja exista no sistema armazenar as informaÁıes na tabela de erro,
--- e caso ele n„o exista, far· o cadastro do novo usu·rio com as novas informaÁıes
+--Fun√ß√£o que faz a verifica√ß√£o ao cadastrar um usu√°rio, em que, caso esse
+-- usu√°rio ja exista no sistema armazenar as informa√ß√µes na tabela de erro,
+-- e caso ele n√£o exista, far√° o cadastro do novo usu√°rio com as novas informa√ß√µes
 
 CREATE OR REPLACE PACKAGE PackageCadastroUsuario IS
     FUNCTION cadastrar_usuario(
@@ -121,7 +121,7 @@ CREATE OR REPLACE PACKAGE BODY PackageCadastroUsuario IS
         v_result VARCHAR2(100);
         v_cd_erro NUMBER(3);
     BEGIN
-        SELECT 'Usu·rio j· cadastrado'
+        SELECT 'Usu√°rio j√° cadastrado'
         INTO v_result
         FROM t_aisb_usuario
         WHERE cd_usuario = p_cd_usuario;
@@ -129,15 +129,15 @@ CREATE OR REPLACE PACKAGE BODY PackageCadastroUsuario IS
         SELECT NVL(MAX(cd_erro), 0) + 1 INTO v_cd_erro FROM t_aisb_erro;
 
         INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
-        VALUES (v_cd_erro, 'Tentativa de duplicaÁ„o de usu·rio', SYSDATE, USER);
+        VALUES (v_cd_erro, 'Tentativa de duplica√ß√£o de usu√°rio', SYSDATE, USER);
 
-        RETURN 'N„o foi possÌvel cadastrar esse usu·rio pois ele j· existe no sistema.';
+        RETURN 'N√£o foi poss√≠vel cadastrar esse usu√°rio pois ele j√° existe no sistema.';
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
             INSERT INTO t_aisb_usuario (cd_usuario, ds_genero, nm_usuario, nr_cpf, nr_cep_residencia, dt_nascimento)
             VALUES (p_cd_usuario, p_ds_genero, p_nm_usuario, p_nr_cpf, p_nr_cep_residencia, p_dt_nascimento);
 
-            RETURN 'O usu·rio foi cadastrado com sucesso.';
+            RETURN 'O usu√°rio foi cadastrado com sucesso.';
     END cadastrar_usuario;
 END PackageCadastroUsuario;
 
@@ -173,7 +173,7 @@ select * from t_aisb_usuario;
 
 
 --------------------------------------------------------------------------------------
---Feito o package do Procedure que  verifica e atualizr a data de encerramento do parceiro de negÛcio
+--Feito o package do Procedure que  verifica e atualizr a data de encerramento do parceiro de neg√≥cio
 CREATE OR REPLACE PACKAGE PackageAtualizacaoParceiro IS
     PROCEDURE atualizar_encerramento_parceiro(
         p_cd_parceiro IN NUMBER,
@@ -211,10 +211,10 @@ CREATE OR REPLACE PACKAGE BODY PackageAtualizacaoParceiro IS
         WHEN NO_DATA_FOUND THEN
             SELECT COALESCE(MAX(cd_erro) + 1, 1) INTO v_cd_erro FROM t_aisb_erro;
             INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
-            VALUES (v_cd_erro, 'Parceiro n„o encontrado para atualizaÁ„o', SYSDATE, USER);
+            VALUES (v_cd_erro, 'Parceiro n√£o encontrado para atualiza√ß√£o', SYSDATE, USER);
             COMMIT;
 
-            DBMS_OUTPUT.PUT_LINE('Parceiro n„o encontrado. Erro registrado na tabela de erro.');
+            DBMS_OUTPUT.PUT_LINE('Parceiro n√£o encontrado. Erro registrado na tabela de erro.');
         WHEN OTHERS THEN
             SELECT COALESCE(MAX(cd_erro) + 1, 1) INTO v_cd_erro FROM t_aisb_erro;
             INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
@@ -240,8 +240,8 @@ select * from t_aisb_parceiro_negocio;
 select * from t_aisb_erro;
 
 ---------------------------------------------------------------------
---Procedure que ir· exibir um relatÛrio de todos os parceiros que encerram 
--- o contrato conosco e caso dÍ aÁgum erro, ele ir· inserir na tebala de erro
+--Procedure que ir√° exibir um relat√≥rio de todos os parceiros que encerram 
+-- o contrato conosco e caso d√™ a√ßgum erro, ele ir√° inserir na tebala de erro
 
 CREATE OR REPLACE PACKAGE PackageRelatorioParceiros IS
     FUNCTION gerar_relatorio_parceiros_encerrados RETURN VARCHAR2;
@@ -252,7 +252,7 @@ CREATE OR REPLACE PACKAGE BODY PackageRelatorioParceiros IS
     IS
         v_cd_erro NUMBER;
         v_nm_erro VARCHAR2(50);
-        v_relatorio VARCHAR2(4000) := 'RelatÛrio de Parceiros Encerrados' || CHR(10) || '--------------------------------' || CHR(10);
+        v_relatorio VARCHAR2(4000) := 'Relat√≥rio de Parceiros Encerrados' || CHR(10) || '--------------------------------' || CHR(10);
     BEGIN
         BEGIN
             FOR rec IN (SELECT cd_parceiro, nm_fantasia, dt_entrada_parceiro, dt_encerramento_parceiro, nr_cnpj
@@ -260,7 +260,7 @@ CREATE OR REPLACE PACKAGE BODY PackageRelatorioParceiros IS
                         WHERE dt_encerramento_parceiro IS NOT NULL) LOOP
 
                 v_relatorio := v_relatorio ||
-                    'CÛdigo do Parceiro: ' || rec.cd_parceiro || CHR(10) ||
+                    'C√≥digo do Parceiro: ' || rec.cd_parceiro || CHR(10) ||
                     'Nome Fantasia: ' || rec.nm_fantasia || CHR(10) ||
                     'Data de Entrada: ' || TO_CHAR(rec.dt_entrada_parceiro, 'DD/MM/YYYY') || CHR(10) ||
                     'Data de Encerramento: ' || TO_CHAR(rec.dt_encerramento_parceiro, 'DD/MM/YYYY') || CHR(10) ||
@@ -268,7 +268,7 @@ CREATE OR REPLACE PACKAGE BODY PackageRelatorioParceiros IS
                     '--------------------------------' || CHR(10);
             END LOOP;
 
-            v_relatorio := v_relatorio || '--------------------------------' || CHR(10) || 'Fim do RelatÛrio' || CHR(10);
+            v_relatorio := v_relatorio || '--------------------------------' || CHR(10) || 'Fim do Relat√≥rio' || CHR(10);
         EXCEPTION
             WHEN OTHERS THEN
                 v_cd_erro := -1; 
@@ -277,7 +277,7 @@ CREATE OR REPLACE PACKAGE BODY PackageRelatorioParceiros IS
                 INSERT INTO t_aisb_erro (cd_erro, nm_erro, dt_ocorrencia, nm_usuario)
                 VALUES (v_cd_erro, v_nm_erro, SYSDATE, USER);
 
-                v_relatorio := 'Ocorreu um erro durante a execuÁ„o da funÁ„o.' || CHR(10) || 'Detalhes do erro: ' || v_nm_erro || CHR(10);
+                v_relatorio := 'Ocorreu um erro durante a execu√ß√£o da fun√ß√£o.' || CHR(10) || 'Detalhes do erro: ' || v_nm_erro || CHR(10);
         END;
         
         RETURN v_relatorio;
@@ -292,7 +292,7 @@ END;
 
 
 -----------------------------------------------------------------------
---Trigger para atualizar a senha do funcion·rio
+--Trigger para atualizar a senha do funcion√°rio
 CREATE OR REPLACE TRIGGER trg_before_atualizacao_senha
 BEFORE UPDATE ON t_aisb_funcionario
 FOR EACH ROW
@@ -310,5 +310,17 @@ WHERE cd_funcionario = 123;
 
 select * from  t_atualizacao_senha;
 select * from t_aisb_funcionario; 
+
+----------------------------------------------------------------------------------------
+------------------------TESTE--------------------
+CREATE OR REPLACE TRIGGER trg_rastreamento_alteracoes
+BEFORE UPDATE ON t_aisb_funcionario
+FOR EACH ROW
+BEGIN
+    IF :OLD.ds_senha <> :NEW.ds_senha THEN 
+        INSERT INTO t_atualizacao_senha (cd_funcionario, operacao, senha_anterior, senha_nova, data_atualizacao, usuario_execucao)
+        VALUES (:OLD.cd_funcionario, 'UPDATE', :OLD.ds_senha, :NEW.ds_senha, SYSTIMESTAMP, USER);
+    END IF;
+END;
 
 
