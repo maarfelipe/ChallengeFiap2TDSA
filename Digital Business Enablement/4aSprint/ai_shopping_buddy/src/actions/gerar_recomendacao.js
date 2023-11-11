@@ -10,7 +10,7 @@ export async function create(formData){
     console.log(JSON.stringify(formData));
     const options = {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: formData ? JSON.stringify(formData): null,
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token.value}`
