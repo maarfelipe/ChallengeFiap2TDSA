@@ -232,11 +232,9 @@ CREATE TABLE t_atualizacao_senha (
 COMMIT;
 
 
+
 create sequence sk_tb_senha;
-
-
-
-
+create sequence sk_update;
 
 
 
