@@ -1,10 +1,11 @@
 "use server"
 
+import { userID, produtos } from "@/app/gerar_recomendacao/page";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function create(formData){
-    const url = "http://localhost:8080/aishoppingbuddy/api/recomendacao";
+    const url = "http://localhost:8080/aishoppingbuddy/api/recomendacao" + userID;
     const token = cookies().get("aishoppingbuddy_token")
     console.log(token);
     console.log(JSON.stringify(formData));

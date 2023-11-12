@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import loginimage from "@/images/login.jpg"
+import bg0 from "@/images/bg2.png"
 import InputText from "@/components/InputText";
 import Button from "@/components/Button";
 import { useForm } from "react-hook-form";
@@ -35,7 +35,7 @@ export default function LoginPage() {
     return (
             <div className="flex h-screen">
                 <aside className="">
-                    <Image src={loginimage} alt="" className="h-full w-full object-cover" />
+                    <Image src={bg0} alt="" className="h-full w-full object-cover" />
                 </aside>
 
                 <main className="flex flex-col items-center justify-center w-full">
