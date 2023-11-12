@@ -1,0 +1,145 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="53844773-B958-F983-03E4-0CD355236EA0" name="T_AISB_TRANSACAO">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:46:58 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cd_transacao" id="A3895FCC-C8FB-72BA-39D3-2FB5B8CD598F">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:47:13 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cd_usuario" id="B0F671A9-84CA-5348-8A3A-FA041FF76D1A">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:51:19 UTC</createdTime>
+<generatorID>25012725-0E7D-AA1C-67C0-1419D99FE7F3</generatorID>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<referedAttribute>EEBB5565-146D-F3E3-89C7-56DA23FCF70C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cd_parceiro" id="4677AEC2-F2B7-ABF8-F7FB-FCD0268AF724">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:50:52 UTC</createdTime>
+<generatorID>22141C27-1FCD-AAAA-5C73-035931866565</generatorID>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<referedAttribute>2140632E-FF59-DD9E-A541-BD5948EA5A92</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cd_produto" id="255BE24F-590C-CBDF-E51E-B2E4459FA224">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:51:43 UTC</createdTime>
+<generatorID>D9471DA3-1FF0-7367-8934-B5C827E16AA8</generatorID>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<referedAttribute>6BB11791-8FF0-08C3-FF5A-B33D1D1E04FB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="vl_total" id="3AA7E151-DEFC-189F-10B7-4D4001F1A33D">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:47:32 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nr_cep_estabelicimento" id="6E43596C-D783-FA6D-F02C-A987F0015ECA">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:47:54 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="st_cancelado" id="0CA980B3-5870-CF8C-F9DC-019E044AA317">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:48:11 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dt_transacao" id="EC8F6252-2D3A-D69D-06D3-105DB813AAFF">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:48:54 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="98FD22BE-F1A5-851E-DD5E-8F137B1FB424" name="PK_AISB_TRANSACOES ">
+<createdBy>luizz</createdBy>
+<createdTime>2023-04-07 02:47:23 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<engineerTo>
+<item key="F39B86DE-E2DD-AEFA-0D83-FC4AE2CE4686" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<newElementsIDs>A3895FCC-C8FB-72BA-39D3-2FB5B8CD598F</newElementsIDs>
+<usedAttributes>
+<attributeRef>A3895FCC-C8FB-72BA-39D3-2FB5B8CD598F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

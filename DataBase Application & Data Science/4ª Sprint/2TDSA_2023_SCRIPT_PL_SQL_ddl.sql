@@ -222,11 +222,17 @@ commit;
 ---------------T_ATUALIZACAO_SENHA------------------
 drop table t_atualizacao_senha cascade constraints;
 CREATE TABLE t_atualizacao_senha (
+    cd_atualizacao_senha NUMBER(4) PRIMARY KEY,
     cd_funcionario NUMBER(4),
+    ds_operacao VARCHAR2(15),
     senha_anterior VARCHAR2(25),
     senha_nova VARCHAR2(25),
     data_atualizacao DATE
 );
+COMMIT;
+
+
+create sequence sk_tb_senha;
 
 
 
